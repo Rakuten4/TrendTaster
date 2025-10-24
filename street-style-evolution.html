@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Street Style Evolution Collection - Fashionista</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Additional styles for collection page */
+        .collection-hero {
+            min-height: 80vh;
+            background-image: url('images/street style.webp');
+            background-size: cover;
+            background-position: center 20%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .collection-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+        
+        .collection-hero-content {
+            text-align: center;
+            color: white;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .collection-hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .collection-hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        .collection-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ff6b6b;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .street-culture {
+            padding: 80px 20px;
+            background: white;
+        }
+        
+        .culture-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .culture-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            border-left: 4px solid #ff6b6b;
+        }
+        
+        .culture-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .culture-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+        
+        .culture-card h3 {
+            margin-bottom: 1rem;
+            color: #2c2c2c;
+        }
+        
+        .culture-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .collection-gallery {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .gallery-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px) rotate(1deg);
+        }
+        
+        .gallery-image {
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .street-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #ff6b6b;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transform: rotate(-5deg);
+        }
+        
+        .gallery-info {
+            padding: 1.5rem;
+        }
+        
+        .gallery-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #2c2c2c;
+        }
+        
+        .gallery-info p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .style-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .style-tag {
+            background: #ffe8e8;
+            color: #ff6b6b;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .influencer-name {
+            color: #ff6b6b;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        .trend-timeline {
+            padding: 80px 20px;
+            background: white;
+        }
+        
+        .timeline-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #ff6b6b, #ee5a24);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .timeline-content {
+            flex: 1;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 15px;
+            margin: 0 3rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-year {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ff6b6b;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 50px;
+            font-weight: bold;
+            z-index: 2;
+        }
+        
+        .timeline-content h3 {
+            color: #2c2c2c;
+            margin-bottom: 1rem;
+        }
+        
+        .timeline-content p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .street-influencers {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+        
+        .influencers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .influencer-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .influencer-card:hover {
+            transform: translateY(-10px) rotate(-2deg);
+        }
+        
+        .influencer-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        
+        .influencer-card h3 {
+            margin-bottom: 0.5rem;
+            color: #2c2c2c;
+        }
+        
+        .influencer-handle {
+            color: #ff6b6b;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .influencer-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .follower-count {
+            background: #ffe8e8;
+            color: #ff6b6b;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .city-styles {
+            padding: 80px 20px;
+            background: white;
+        }
+        
+        .cities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .city-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .city-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .city-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .city-name {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 15px;
+            font-weight: 500;
+        }
+        
+        .city-info {
+            padding: 1.5rem;
+        }
+        
+        .city-info h3 {
+            margin-bottom: 1rem;
+            color: #2c2c2c;
+        }
+        
+        .city-info p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .signature-styles {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .signature-style {
+            background: #ff6b6b;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 768px) {
+            .collection-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .collection-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .timeline-line {
+                left: 30px;
+            }
+            
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                flex-direction: row;
+            }
+            
+            .timeline-content {
+                margin-left: 60px;
+                margin-right: 0;
+            }
+            
+            .timeline-year {
+                left: 30px;
+            }
+            
+            .gallery-grid,
+            .culture-grid,
+            .influencers-grid,
+            .cities-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2><a href="index.html" style="text-decoration: none; color: #667eea;">Fashionista</a></h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#collections" class="nav-link">Collections</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#design" class="nav-link">Design</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#trends" class="nav-link">Trends</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Collection Hero -->
+    <section class="collection-hero">
+        <div class="collection-hero-content">
+            <h1>Street Style Evolution</h1>
+            <p>Urban fashion that captures the pulse of contemporary street culture and defines tomorrow's trends</p>
+            <div class="collection-stats">
+                <div class="stat">
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">Global Cities</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">200+</div>
+                    <div class="stat-label">Style Influencers</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">50M</div>
+                    <div class="stat-label">Social Impressions</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Street Culture -->
+    <section class="street-culture">
+        <div class="container">
+            <h2 class="section-title">Street Culture Elements</h2>
+            <div class="culture-grid">
+                <div class="culture-card">
+                    <div class="culture-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3>Music Influence</h3>
+                    <p>Hip-hop, punk, and electronic music scenes continuously shape street fashion aesthetics and attitudes.</p>
+                </div>
+                
+                <div class="culture-card">
+                    <div class="culture-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Art & Graffiti</h3>
+                    <p>Street art and graffiti culture inspire bold graphics, vibrant colors, and rebellious design elements.</p>
+                </div>
+                
+                <div class="culture-card">
+                    <div class="culture-icon">
+                        <i class="fas fa-skateboard"></i>
+                    </div>
+                    <h3>Skateboard Culture</h3>
+                    <p>Skate culture brings functional streetwear, oversized fits, and a DIY aesthetic to mainstream fashion.</p>
+                </div>
+                
+                <div class="culture-card">
+                    <div class="culture-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3>Gaming & Tech</h3>
+                    <p>Gaming culture and tech trends introduce futuristic elements and digital-inspired designs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collection Gallery -->
+    <section class="collection-gallery">
+        <div class="container">
+            <h2 class="section-title">Street Style Looks</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="gallery-image" style="background: linear-gradient(45deg, #ff6b6b, #ee5a24);">
+                        <div class="street-badge">NYC Vibes</div>
+                    </div>
+                    <div class="gallery-info">
+                        <h3>Urban Layers Look</h3>
+                        <p>Multiple layering with oversized hoodie, vintage tee, and statement accessories creating depth and interest.</p>
+                        <div class="style-tags">
+                            <span class="style-tag">Layering</span>
+                            <span class="style-tag">Oversized</span>
+                            <span class="style-tag">Vintage</span>
+                        </div>
+                        <div class="influencer-name">@streetstyle_maven</div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <div class="gallery-image" style="background: linear-gradient(45deg, #667eea, #764ba2);">
+                        <div class="street-badge">Tokyo Fresh</div>
+                    </div>
+                    <div class="gallery-info">
+                        <h3>Harajuku Fusion</h3>
+                        <p>Colorful mix of kawaii elements with streetwear staples, creating a playful yet edgy aesthetic.</p>
+                        <div class="style-tags">
+                            <span class="style-tag">Kawaii</span>
+                            <span class="style-tag">Colorful</span>
+                            <span class="style-tag">Mixed Prints</span>
+                        </div>
+                        <div class="influencer-name">@tokyo_street_art</div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <div class="gallery-image" style="background: linear-gradient(45deg, #56cc9d, #6dd5b5);">
+                        <div class="street-badge">LA Cool</div>
+                    </div>
+                    <div class="gallery-info">
+                        <h3>West Coast Casual</h3>
+                        <p>Relaxed California vibes with sustainable fabrics, earth tones, and comfortable silhouettes.</p>
+                        <div class="style-tags">
+                            <span class="style-tag">Sustainable</span>
+                            <span class="style-tag">Earth Tones</span>
+                            <span class="style-tag">Comfort</span>
+                        </div>
+                        <div class="influencer-name">@la_street_chronicles</div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <div class="gallery-image" style="background: linear-gradient(45deg, #ffecd2, #fcb69f);">
+                        <div class="street-badge">London Edge</div>
+                    </div>
+                    <div class="gallery-info">
+                        <h3>British Punk Revival</h3>
+                        <p>Modern take on punk aesthetics with tartan patterns, leather jackets, and bold accessories.</p>
+                        <div class="style-tags">
+                            <span class="style-tag">Punk</span>
+                            <span class="style-tag">Tartan</span>
+                            <span class="style-tag">Leather</span>
+                        </div>
+                        <div class="influencer-name">@london_street_rebel</div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <div class="gallery-image" style="background: linear-gradient(45deg, #a18cd1, #fbc2eb);">
+                        <div class="street-badge">Seoul Style</div>
+                    </div>
+                    <div class="gallery-info">
+                        <h3>K-Fashion Minimalism</h3>
+                        <p>Clean lines and neutral palettes influenced by Korean fashion trends and minimalist aesthetics.</p>
+                        <div class="style-tags">
+                            <span class="style-tag">Minimalist</span>
+                            <span class="style-tag">K-Fashion</span>
+                            <span class="style-tag">Clean Lines</span>
+                        </div>
+                        <div class="influencer-name">@seoul_style_guide</div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <div class="gallery-image" style="background: linear-gradient(45deg, #ff9a9e, #fecfef);">
+                        <div class="street-badge">Milan Chic</div>
+                    </div>
+                    <div class="gallery-info">
+                        <h3>Elevated Streetwear</h3>
+                        <p>High-end streetwear with luxury touches, combining comfort with sophisticated details.</p>
+                        <div class="style-tags">
+                            <span class="style-tag">Luxury</span>
+                            <span class="style-tag">Elevated</span>
+                            <span class="style-tag">Designer</span>
+                        </div>
+                        <div class="influencer-name">@milan_street_luxury</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trend Timeline -->
+    <section class="trend-timeline">
+        <div class="container">
+            <h2 class="section-title">Street Style Evolution Timeline</h2>
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2020</div>
+                    <div class="timeline-content">
+                        <h3>Comfort Revolution</h3>
+                        <p>The pandemic shifted street style towards comfort-first fashion with loungewear, athleisure, and cozy aesthetics becoming mainstream.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2021</div>
+                    <div class="timeline-content">
+                        <h3>Sustainability Rise</h3>
+                        <p>Environmental consciousness drove the popularity of thrifted, vintage, and upcycled pieces in street fashion.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2022</div>
+                    <div class="timeline-content">
+                        <h3>Y2K Revival</h3>
+                        <p>Early 2000s nostalgia brought back low-rise jeans, cargo pants, and futuristic accessories to street style.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2023</div>
+                    <div class="timeline-content">
+                        <h3>Gender-Fluid Fashion</h3>
+                        <p>Breaking gender boundaries with unisex designs, shared closets, and inclusive fashion becoming the norm.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2024</div>
+                    <div class="timeline-content">
+                        <h3>Tech Integration</h3>
+                        <p>Smart fabrics, LED accessories, and tech-enhanced clothing started appearing in everyday street wear.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2025</div>
+                    <div class="timeline-content">
+                        <h3>Digital Fashion</h3>
+                        <p>Virtual try-ons, AR filters, and digital-first fashion pieces are reshaping how we experience street style.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Street Influencers -->
+    <section class="street-influencers">
+        <div class="container">
+            <h2 class="section-title">Street Style Influencers</h2>
+            <div class="influencers-grid">
+                <div class="influencer-card">
+                    <div class="influencer-avatar">SM</div>
+                    <h3>Street Maven</h3>
+                    <div class="influencer-handle">@streetstyle_maven</div>
+                    <p>NYC-based style curator known for mixing high-end pieces with vintage finds and street market discoveries.</p>
+                    <div class="follower-count">2.3M Followers</div>
+                </div>
+                
+                <div class="influencer-card">
+                    <div class="influencer-avatar">TA</div>
+                    <h3>Tokyo Art</h3>
+                    <div class="influencer-handle">@tokyo_street_art</div>
+                    <p>Tokyo fashion innovator blending traditional Japanese elements with contemporary streetwear aesthetics.</p>
+                    <div class="follower-count">1.8M Followers</div>
+                </div>
+                
+                <div class="influencer-card">
+                    <div class="influencer-avatar">LC</div>
+                    <h3>LA Chronicles</h3>
+                    <div class="influencer-handle">@la_street_chronicles</div>
+                    <p>West Coast lifestyle blogger focusing on sustainable street fashion and conscious consumption.</p>
+                    <div class="follower-count">1.5M Followers</div>
+                </div>
+                
+                <div class="influencer-card">
+                    <div class="influencer-avatar">LR</div>
+                    <h3>London Rebel</h3>
+                    <div class="influencer-handle">@london_street_rebel</div>
+                    <p>British style icon known for punk-inspired looks and avant-garde street fashion experiments.</p>
+                    <div class="follower-count">2.1M Followers</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Global City Styles -->
+    <section class="city-styles">
+        <div class="container">
+            <h2 class="section-title">Global Street Style</h2>
+            <div class="cities-grid">
+                <div class="city-card">
+                    <div class="city-image" style="background: linear-gradient(45deg, #ff6b6b, #ee5a24);">
+                        <div class="city-name">New York</div>
+                    </div>
+                    <div class="city-info">
+                        <h3>NYC Street Style</h3>
+                        <p>Bold, eclectic mix of high fashion and streetwear. New Yorkers are known for their fearless approach to fashion and creative layering.</p>
+                        <div class="signature-styles">
+                            <span class="signature-style">Layering</span>
+                            <span class="signature-style">All Black</span>
+                            <span class="signature-style">Statement Shoes</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="city-card">
+                    <div class="city-image" style="background: linear-gradient(45deg, #667eea, #764ba2);">
+                        <div class="city-name">Tokyo</div>
+                    </div>
+                    <div class="city-info">
+                        <h3>Tokyo Street Fashion</h3>
+                        <p>Experimental and playful with influences from anime, kawaii culture, and avant-garde design. Anything goes in Tokyo fashion.</p>
+                        <div class="signature-styles">
+                            <span class="signature-style">Kawaii</span>
+                            <span class="signature-style">Experimental</span>
+                            <span class="signature-style">Color Blocking</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="city-card">
+                    <div class="city-image" style="background: linear-gradient(45deg, #56cc9d, #6dd5b5);">
+                        <div class="city-name">Los Angeles</div>
+                    </div>
+                    <div class="city-info">
+                        <h3>LA Casual Cool</h3>
+                        <p>Relaxed, health-conscious style with emphasis on comfort and sustainability. Perfect for the laid-back California lifestyle.</p>
+                        <div class="signature-styles">
+                            <span class="signature-style">Athleisure</span>
+                            <span class="signature-style">Sustainable</span>
+                            <span class="signature-style">Beach Vibes</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="city-card">
+                    <div class="city-image" style="background: linear-gradient(45deg, #a18cd1, #fbc2eb);">
+                        <div class="city-name">Seoul</div>
+                    </div>
+                    <div class="city-info">
+                        <h3>K-Fashion Influence</h3>
+                        <p>Clean, minimalist aesthetics mixed with cute and trendy elements. Korean fashion emphasizes fit, quality, and attention to detail.</p>
+                        <div class="signature-styles">
+                            <span class="signature-style">Minimalist</span>
+                            <span class="signature-style">Oversized</span>
+                            <span class="signature-style">Pastel Colors</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Collections -->
+    <section style="padding: 40px 20px; text-align: center; background: white;">
+        <a href="index.html#collections" class="btn btn-primary">
+            <i class="fas fa-arrow-left"></i> Back to Collections
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Fashionista</h3>
+                    <p>Celebrating the artistry and innovation of fashion design worldwide.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#home">Home</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#collections">Collections</a></li>
+                        <li><a href="index.html#design">Design</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Collections</h4>
+                    <ul>
+                        <li><a href="avant-garde-couture.html">Avant-Garde Couture</a></li>
+                        <li><a href="sustainable-fashion.html">Sustainable Fashion</a></li>
+                        <li><a href="street-style-evolution.html">Street Style Evolution</a></li>
+                        <li><a href="#">Heritage Revival</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Fashionista. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pattern Making - Fashion Design Studio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Pattern Making Specific Styles */
+        .pattern-hero {
+            min-height: 70vh;
+            background: linear-gradient(135deg, #2C3E50 0%, #3498DB 50%, #E74C3C 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pattern-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="patternGrid" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23patternGrid)"/></svg>');
+            opacity: 0.4;
+        }
+        
+        .pattern-hero-content {
+            text-align: center;
+            color: white;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .pattern-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .pattern-hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        .tools-section {
+            padding: 80px 20px;
+        }
+        
+        .tools-category {
+            margin-bottom: 5rem;
+        }
+        
+        .category-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .category-header h3 {
+            font-size: 2.5rem;
+            color: #2C3E50;
+            margin-bottom: 1rem;
+        }
+        
+        .category-description {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #666;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .tool-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            border-color: #3498DB;
+        }
+        
+        .tool-header {
+            height: 180px;
+            background: linear-gradient(135deg, #2C3E50, #3498DB);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            position: relative;
+        }
+        
+        .tool-content {
+            padding: 2rem;
+        }
+        
+        .tool-content h4 {
+            color: #2C3E50;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .tool-badge {
+            background: linear-gradient(45deg, #3498DB, #E74C3C);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+        
+        .tool-content p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .tool-specs {
+            background: #f8f9fa;
+            padding: 1.2rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+        
+        .tool-specs h5 {
+            color: #2C3E50;
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+        
+        .spec-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.5rem;
+        }
+        
+        .spec-item {
+            background: white;
+            padding: 0.6rem;
+            border-radius: 8px;
+            text-align: center;
+            color: #666;
+            font-size: 0.85rem;
+            border: 2px solid #e9ecef;
+            transition: all 0.2s ease;
+        }
+        
+        .spec-item:hover {
+            border-color: #3498DB;
+            color: #2C3E50;
+        }
+        
+        .price-info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 2px solid #e9ecef;
+        }
+        
+        .price-label {
+            color: #666;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .price-value {
+            color: #E74C3C;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .basic-tools {
+            background: white;
+        }
+        
+        .measuring-tools {
+            background: #f8f9fa;
+        }
+        
+        .cutting-tools {
+            background: white;
+        }
+        
+        .digital-tools {
+            background: #f8f9fa;
+        }
+        
+        .techniques-section {
+            padding: 80px 20px;
+            background: white;
+        }
+        
+        .techniques-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .technique-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+        }
+        
+        .technique-card:hover {
+            transform: translateY(-8px);
+            border-color: #3498DB;
+            background: white;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .technique-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            background: linear-gradient(45deg, #2C3E50, #3498DB);
+        }
+        
+        .technique-card h4 {
+            color: #2C3E50;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .technique-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .difficulty-level {
+            display: inline-block;
+            background: linear-gradient(45deg, #E74C3C, #F39C12);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        .workflow-section {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+        
+        .workflow-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .workflow-timeline {
+            position: relative;
+        }
+        
+        .workflow-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #2C3E50, #3498DB, #E74C3C);
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .workflow-step {
+            position: relative;
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .workflow-step:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .workflow-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 45%;
+            margin: 0 2rem;
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .workflow-content:hover {
+            border-color: #3498DB;
+            transform: scale(1.02);
+        }
+        
+        .workflow-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #2C3E50, #3498DB);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.3rem;
+            z-index: 2;
+            border: 4px solid white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .workflow-content h4 {
+            color: #2C3E50;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .workflow-content p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .pattern-types {
+            padding: 80px 20px;
+            background: white;
+        }
+        
+        .types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .type-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+        }
+        
+        .type-card:hover {
+            transform: translateY(-10px);
+            border-color: #E74C3C;
+        }
+        
+        .type-visual {
+            height: 150px;
+            background: linear-gradient(45deg, #2C3E50, #E74C3C);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+        }
+        
+        .type-info {
+            padding: 1.5rem;
+        }
+        
+        .type-info h4 {
+            color: #2C3E50;
+            margin-bottom: 1rem;
+        }
+        
+        .type-info p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .type-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .type-feature {
+            background: white;
+            color: #2C3E50;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid #e9ecef;
+        }
+        
+        .industry-standards {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+        
+        .standards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .standard-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .standard-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .standard-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(45deg, #27AE60, #2ECC71);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+        }
+        
+        .standard-card h4 {
+            color: #27AE60;
+            margin-bottom: 1rem;
+        }
+        
+        .standard-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .pattern-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .tools-grid,
+            .techniques-grid,
+            .types-grid,
+            .standards-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .workflow-timeline::before {
+                left: 30px;
+            }
+            
+            .workflow-step {
+                flex-direction: row !important;
+                padding-left: 70px;
+            }
+            
+            .workflow-step:nth-child(even) {
+                flex-direction: row !important;
+            }
+            
+            .workflow-content {
+                width: 100%;
+                margin: 0;
+            }
+            
+            .workflow-number {
+                position: absolute;
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2><a href="index.html" style="text-decoration: none; color: #667eea;">Fashionista</a></h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#collections" class="nav-link">Collections</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#design" class="nav-link">Design</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#trends" class="nav-link">Trends</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Pattern Making Hero -->
+    <section class="pattern-hero">
+        <div class="pattern-hero-content">
+            <h1>Pattern Making Mastery</h1>
+            <p>Master the foundation of fashion design with professional pattern making tools, techniques, and industry-standard practices</p>
+        </div>
+    </section>
+
+    <!-- Basic Pattern Making Tools -->
+    <section class="tools-section basic-tools">
+        <div class="container">
+            <div class="tools-category">
+                <div class="category-header">
+                    <h3>Essential Pattern Making Tools</h3>
+                    <p class="category-description">
+                        Professional-grade tools that form the foundation of pattern making. These precision instruments ensure accuracy, 
+                        efficiency, and professional results in creating fashion patterns from concept to final product.
+                    </p>
+                </div>
+                <div class="tools-grid">
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-ruler-combined"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Pattern Master Ruler <span class="tool-badge">Essential</span></h4>
+                            <p>Professional pattern making ruler with multiple scales, hip curves, and straight edges for accurate pattern drafting and grading.</p>
+                            <div class="tool-specs">
+                                <h5>Specifications</h5>
+                                <div class="spec-list">
+                                    <div class="spec-item">24" Length</div>
+                                    <div class="spec-item">Clear Acrylic</div>
+                                    <div class="spec-item">Multiple Scales</div>
+                                    <div class="spec-item">Hip Curve</div>
+                                </div>
+                            </div>
+                            <div class="price-info">
+                                <span class="price-label">Professional Grade</span>
+                                <span class="price-value">$45-85</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-bezier-curve"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>French Curve Set <span class="tool-badge">Professional</span></h4>
+                            <p>Set of curved rulers for drawing smooth, professional curves including armholes, necklines, and hip curves with precision.</p>
+                            <div class="tool-specs">
+                                <h5>Set Includes</h5>
+                                <div class="spec-list">
+                                    <div class="spec-item">Hip Curve</div>
+                                    <div class="spec-item">Armhole Curve</div>
+                                    <div class="spec-item">Neckline Curve</div>
+                                    <div class="spec-item">Fashion Curve</div>
+                                </div>
+                            </div>
+                            <div class="price-info">
+                                <span class="price-label">Complete Set</span>
+                                <span class="price-value">$35-65</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-compass"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Pattern Notcher <span class="tool-badge">Precision</span></h4>
+                            <p>Professional tool for creating consistent notches and marks on patterns, ensuring accurate alignment during garment construction.</p>
+                            <div class="tool-specs">
+                                <h5>Features</h5>
+                                <div class="spec-list">
+                                    <div class="spec-item">3mm Notches</div>
+                                    <div class="spec-item">Durable Steel</div>
+                                    <div class="spec-item">Comfortable Grip</div>
+                                    <div class="spec-item">Clean Cuts</div>
+                                </div>
+                            </div>
+                            <div class="price-info">
+                                <span class="price-label">Industry Standard</span>
+                                <span class="price-value">$25-40</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-thumbtack"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Pattern Weights <span class="tool-badge">Efficient</span></h4>
+                            <p>Heavy-duty pattern weights that hold fabric and patterns in place without pins, enabling faster and more accurate cutting.</p>
+                            <div class="tool-specs">
+                                <h5>Specifications</h5>
+                                <div class="spec-list">
+                                    <div class="spec-item">Weighted Design</div>
+                                    <div class="spec-item">No Pin Holes</div>
+                                    <div class="spec-item">Various Shapes</div>
+                                    <div class="spec-item">Non-slip Base</div>
+                                </div>
+                            </div>
+                            <div class="price-info">
+                                <span class="price-label">Set of 8</span>
+                                <span class="price-value">$20-35</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-pencil-alt"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Pattern Paper <span class="tool-badge">Foundation</span></h4>
+                            <p>High-quality pattern paper designed for durability and precision marking, available in various weights and grid patterns.</p>
+                            <div class="tool-specs">
+                                <h5>Options</h5>
+                                <div class="spec-list">
+                                    <div class="spec-item">Dot & Cross</div>
+                                    <div class="spec-item">Medical Paper</div>
+                                    <div class="spec-item">Oak Tag</div>
+                                    <div class="spec-item">Manila Board</div>
+                                </div>
+                            </div>
+                            <div class="price-info">
+                                <span class="price-label">Per Roll</span>
+                                <span class="price-value">$15-45</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Awl & Tracing Wheel <span class="tool-badge">Marking</span></h4>
+                            <p>Precision marking tools for transferring pattern details, creating perforations, and marking construction lines accurately.</p>
+                            <div class="tool-specs">
+                                <h5>Tools Include</h5>
+                                <div class="spec-list">
+                                    <div class="spec-item">Sharp Awl</div>
+                                    <div class="spec-item">Tracing Wheel</div>
+                                    <div class="spec-item">Carbon Paper</div>
+                                    <div class="spec-item">Safety Cap</div>
+                                </div>
+                            </div>
+                            <div class="price-info">
+                                <span class="price-label">Complete Set</span>
+                                <span class="price-value">$18-30</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Measuring Tools Section -->
+    <section class="tools-section measuring-tools">
+        <div class="container">
+            <div class="tools-category">
+                <div class="category-header">
+                    <h3>Professional Measuring Tools</h3>
+                    <p class="category-description">
+                        Precision measuring instruments essential for accurate body measurements, pattern adjustments, and quality control. 
+                        These tools ensure perfect fit and professional standards in pattern development.
+                    </p>
+                </div>
+                <div class="tools-grid">
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-tape"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Professional Measuring Tape <span class="tool-badge">Essential</span></h4>
+                            <p>High-quality fiberglass measuring tape with metal tips, non-stretch properties, and clear markings for accurate body measurements.</p>
+                            <div class="tool-specs">
+                                <h5>Features</h5>
+                                <div class="spec-list">
+                                    <div class="spec-item">60" Length</div>
+                                    <div class="spec-item">Fiberglass Core</div>
+                                    <div class="spec-item">Metal Tips</div>
+                                    <div class="spec-item">Double-sided</div>
+                                </div>
+                            </div>
+                            <div class="price-info">
+                                <span class="price-label">Professional</span>
+                                <span class="price-value">$8-15</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Seam Gauge <span class="tool-badge">Precision</span></h4>
+                            <p>Small metal ruler with adjustable marker for measuring consistent seam allowances, buttonholes, and small pattern details.</p>
+                            <div class="tool-specs">
+                                <h5>Specifications</h5>
+                                <div class="spec-list">
+                                    <div class="spec-item">6" Metal Ruler</div>
+                                    <div class="spec-item">Sliding Marker</div>
+                                    <div class="spec-item">Inch/Metric</div>
+                                    <div class="spec-item">Durable Steel</div>
+                                </div>
+                            </div>
+                            <div class="price-info">
+                                <span class="price-label">Standard</span>
+                                <span class="price-value">$5-12</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-square-root-alt"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>L-Square Ruler <span class="tool-badge">Accuracy</span></h4>
+                            <p>Large L-shaped ruler for creating perfect right angles, squaring patterns, and ensuring accurate grain lines in pattern making.</p>
+                            <div class="tool-specs">
+                                <h5>Dimensions</h5>
+                                <div class="spec-list">
+                                    <div class="spec-item">24" x 14"</div>
+                                    <div class="spec-item">Clear Acrylic</div>
+                                    <div class="spec-item">Grid Markings</div>
+                                    <div class="spec-item">Right Angle</div>
+                                </div>
+                            </div>
+                            <div class="price-info">
+                                <span class="price-label">Professional</span>
+                                <span class="price-value">$25-45</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-circle"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Pattern Circle <span class="tool-badge">Specialized</span></h4>
+                            <p>Adjustable compass-style tool for drawing perfect circles, arcs, and curved seam lines with consistent radius measurements.</p>
+                            <div class="tool-specs">
+                                <h5>Capabilities</h5>
+                                <div class="spec-list">
+                                    <div class="spec-item">Adjustable Radius</div>
+                                    <div class="spec-item">Sharp Point</div>
+                                    <div class="spec-item">Pencil Holder</div>
+                                    <div class="spec-item">Metal Construction</div>
+                                </div>
+                            </div>
+                            <div class="price-info">
+                                <span class="price-label">Professional</span>
+                                <span class="price-value">$15-28</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cutting Tools Section -->
+    <section class="tools-section cutting-tools">
+        <div class="container">
+            <div class="tools-category">
+                <div class="category-header">
+                    <h3>Professional Cutting Tools</h3>
+                    <p class="category-description">
+                        High-quality cutting instruments designed for precision and durability. These tools ensure clean, accurate cuts 
+                        in both pattern paper and fabric, maintaining sharpness through extensive professional use.
+                    </p>
+                </div>
+                <div class="tools-grid">
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-cut"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Pattern Shears <span class="tool-badge">Professional</span></h4>
+                            <p>Heavy-duty scissors designed specifically for cutting pattern paper and cardboard with precision and minimal effort.</p>
+                            <div class="tool-specs">
+                                <h5>Features</h5>
+                                <div class="spec-list">
+                                    <div class="spec-item">9-10" Blades</div>
+                                    <div class="spec-item">Stainless Steel</div>
+                                    <div class="spec-item">Ergonomic Grip</div>
+                                    <div class="spec-item">Sharp Point</div>
+                                </div>
+                            </div>
+                            <div class="price-info">
+                                <span class="price-label">Professional</span>
+                                <span class="price-value">$35-85</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-circle-notch"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Rotary Cutter <span class="tool-badge">Efficient</span></h4>
+                            <p>Professional rotary cutter with replaceable blades for smooth, continuous cuts through multiple layers of fabric and paper.</p>
+                            <div class="tool-specs">
+                                <h5>Specifications</h5>
+                                <div class="spec-list">
+                                    <div class="spec-item">45mm Blade</div>
+                                    <div class="spec-item">Safety Lock</div>
+                                    <div class="spec-item">Comfort Grip</div>
+                                    <div class="spec-item">Blade Guard</div>
+                                </div>
+                            </div>
+                            <div class="price-info">
+                                <span class="price-label">With Blades</span>
+                                <span class="price-value">$20-40</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Cutting Mat <span class="tool-badge">Essential</span></h4>
+                            <p>Self-healing cutting surface with grid lines and measurements, protecting blades and work surfaces during cutting operations.</p>
+                            <div class="tool-specs">
+                                <h5>Sizes Available</h5>
+                                <div class="spec-list">
+                                    <div class="spec-item">18" x 24"</div>
+                                    <div class="spec-item">24" x 36"</div>
+                                    <div class="spec-item">36" x 48"</div>
+                                    <div class="spec-item">Self-healing</div>
+                                </div>
+                            </div>
+                            <div class="price-info">
+                                <span class="price-label">Large Size</span>
+                                <span class="price-value">$45-120</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-shapes"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Pattern Punch <span class="tool-badge">Marking</span></h4>
+                            <p>Specialized tool for creating precise holes in patterns for hanging, organizing, and marking reference points.</p>
+                            <div class="tool-specs">
+                                <h5>Features</h5>
+                                <div class="spec-list">
+                                    <div class="spec-item">3mm Holes</div>
+                                    <div class="spec-item">Clean Punch</div>
+                                    <div class="spec-item">Ergonomic Design</div>
+                                    <div class="spec-item">Durable Metal</div>
+                                </div>
+                            </div>
+                            <div class="price-info">
+                                <span class="price-label">Professional</span>
+                                <span class="price-value">$18-35</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Digital Pattern Making Tools -->
+    <section class="tools-section digital-tools">
+        <div class="container">
+            <div class="tools-category">
+                <div class="category-header">
+                    <h3>Digital Pattern Making Software</h3>
+                    <p class="category-description">
+                        Modern computer-aided design software that revolutionizes pattern making with precision, efficiency, and automation. 
+                        These digital tools integrate traditional techniques with cutting-edge technology.
+                    </p>
+                </div>
+                <div class="tools-grid">
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Gerber AccuMark <span class="tool-badge">Industry Leader</span></h4>
+                            <p>Professional pattern design and grading software used by major fashion brands worldwide for precise pattern development and production.</p>
+                            <div class="tool-specs">
+                                <h5>Capabilities</h5>
+                                <div class="spec-list">
+                                    <div class="spec-item">Pattern Design</div>
+                                    <div class="spec-item">Auto Grading</div>
+                                    <div class="spec-item">Marker Making</div>
+                                    <div class="spec-item">3D Visualization</div>
+                                </div>
+                            </div>
+                            <div class="price-info">
+                                <span class="price-label">Enterprise</span>
+                                <span class="price-value">Contact Sales</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-vector-square"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Lectra Modaris <span class="tool-badge">Professional</span></h4>
+                            <p>Advanced pattern making software with intelligent grading, 3D prototyping, and automated pattern adjustment capabilities.</p>
+                            <div class="tool-specs">
+                                <h5>Features</h5>
+                                <div class="spec-list">
+                                    <div class="spec-item">Smart Grading</div>
+                                    <div class="spec-item">3D Fit</div>
+                                    <div class="spec-item">Auto Seaming</div>
+                                    <div class="spec-item">Size Range</div>
+                                </div>
+                            </div>
+                            <div class="price-info">
+                                <span class="price-label">Professional</span>
+                                <span class="price-value">$300/month</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-drafting-compass"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Optitex PDS <span class="tool-badge">Complete Suite</span></h4>
+                            <p>Comprehensive pattern design system offering 2D pattern creation, 3D virtual prototyping, and automated marker making.</p>
+                            <div class="tool-specs">
+                                <h5>Modules</h5>
+                                <div class="spec-list">
+                                    <div class="spec-item">2D Design</div>
+                                    <div class="spec-item">3D Modeling</div>
+                                    <div class="spec-item">Marker Making</div>
+                                    <div class="spec-item">Production</div>
+                                </div>
+                            </div>
+                            <div class="price-info">
+                                <span class="price-label">Enterprise</span>
+                                <span class="price-value">Contact Sales</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Adobe Illustrator <span class="tool-badge">Versatile</span></h4>
+                            <p>Vector graphics software adapted for pattern making with precise measurement tools, bezier curves, and technical drawing capabilities.</p>
+                            <div class="tool-specs">
+                                <h5>Pattern Tools</h5>
+                                <div class="spec-list">
+                                    <div class="spec-item">Vector Precision</div>
+                                    <div class="spec-item">Measurement Tools</div>
+                                    <div class="spec-item">Layer System</div>
+                                    <div class="spec-item">Export Options</div>
+                                </div>
+                            </div>
+                            <div class="price-info">
+                                <span class="price-label">Creative Cloud</span>
+                                <span class="price-value">$20.99/month</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-cube"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Clo 3D <span class="tool-badge">3D Specialist</span></h4>
+                            <p>3D fashion design software that bridges pattern making and virtual garment creation with realistic fabric simulation.</p>
+                            <div class="tool-specs">
+                                <h5>3D Features</h5>
+                                <div class="spec-list">
+                                    <div class="spec-item">Pattern to 3D</div>
+                                    <div class="spec-item">Fabric Physics</div>
+                                    <div class="spec-item">Fit Analysis</div>
+                                    <div class="spec-item">Rendering</div>
+                                </div>
+                            </div>
+                            <div class="price-info">
+                                <span class="price-label">Professional</span>
+                                <span class="price-value">$50/month</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Pattern Making Apps <span class="tool-badge">Mobile</span></h4>
+                            <p>Mobile applications for basic pattern making, measurements, and calculations, enabling pattern work on tablets and smartphones.</p>
+                            <div class="tool-specs">
+                                <h5>App Features</h5>
+                                <div class="spec-list">
+                                    <div class="spec-item">Touch Interface</div>
+                                    <div class="spec-item">Cloud Sync</div>
+                                    <div class="spec-item">Measurements</div>
+                                    <div class="spec-item">Calculations</div>
+                                </div>
+                            </div>
+                            <div class="price-info">
+                                <span class="price-label">App Store</span>
+                                <span class="price-value">$5-25</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pattern Making Techniques -->
+    <section class="techniques-section">
+        <div class="container">
+            <h2 class="section-title">Pattern Making Techniques</h2>
+            <div class="techniques-grid">
+                <div class="technique-card">
+                    <div class="technique-icon">
+                        <i class="fas fa-drafting-compass"></i>
+                    </div>
+                    <h4>Flat Pattern Drafting</h4>
+                    <p>Creating patterns from measurements using mathematical calculations and geometric principles to develop basic blocks and slopers.</p>
+                    <span class="difficulty-level">Intermediate</span>
+                </div>
+
+                <div class="technique-card">
+                    <div class="technique-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h4>Draping</h4>
+                    <p>Creating patterns by draping fabric directly on a dress form, allowing for organic shapes and natural fall of the fabric.</p>
+                    <span class="difficulty-level">Advanced</span>
+                </div>
+
+                <div class="technique-card">
+                    <div class="technique-icon">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                    </div>
+                    <h4>Grading</h4>
+                    <p>Systematically increasing or decreasing pattern sizes while maintaining proper fit proportions across size ranges.</p>
+                    <span class="difficulty-level">Expert</span>
+                </div>
+
+                <div class="technique-card">
+                    <div class="technique-icon">
+                        <i class="fas fa-pencil-ruler"></i>
+                    </div>
+                    <h4>Pattern Alteration</h4>
+                    <p>Modifying existing patterns to achieve better fit, design changes, or accommodate specific body measurements.</p>
+                    <span class="difficulty-level">Intermediate</span>
+                </div>
+
+                <div class="technique-card">
+                    <div class="technique-icon">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <h4>Industrial Pattern Making</h4>
+                    <p>Creating production-ready patterns with seam allowances, notches, and specifications for mass manufacturing.</p>
+                    <span class="difficulty-level">Expert</span>
+                </div>
+
+                <div class="technique-card">
+                    <div class="technique-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h4>3D Pattern Development</h4>
+                    <p>Using 3D software to create and test patterns virtually before physical production, saving time and materials.</p>
+                    <span class="difficulty-level">Advanced</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pattern Making Workflow -->
+    <section class="workflow-section">
+        <div class="container">
+            <h2 class="section-title">Pattern Making Workflow</h2>
+            <div class="workflow-container">
+                <div class="workflow-timeline">
+                    <div class="workflow-step">
+                        <div class="workflow-content">
+                            <h4>Design Analysis</h4>
+                            <p>Study the design sketch, analyze construction details, and determine the most efficient pattern making approach for the garment.</p>
+                        </div>
+                        <div class="workflow-number">1</div>
+                    </div>
+
+                    <div class="workflow-step">
+                        <div class="workflow-content">
+                            <h4>Measurements & Calculations</h4>
+                            <p>Take accurate body measurements, calculate ease allowances, and determine the base size for pattern development.</p>
+                        </div>
+                        <div class="workflow-number">2</div>
+                    </div>
+
+                    <div class="workflow-step">
+                        <div class="workflow-content">
+                            <h4>Basic Block Creation</h4>
+                            <p>Draft the basic sloper or block pattern that serves as the foundation for the specific design modifications.</p>
+                        </div>
+                        <div class="workflow-number">3</div>
+                    </div>
+
+                    <div class="workflow-step">
+                        <div class="workflow-content">
+                            <h4>Style Line Development</h4>
+                            <p>Add design details, style lines, darts, and shape modifications to transform the basic block into the desired design.</p>
+                        </div>
+                        <div class="workflow-number">4</div>
+                    </div>
+
+                    <div class="workflow-step">
+                        <div class="workflow-content">
+                            <h4>Pattern Testing & Fitting</h4>
+                            <p>Create a test garment (muslin or toile) to evaluate fit, make necessary adjustments, and refine the pattern.</p>
+                        </div>
+                        <div class="workflow-number">5</div>
+                    </div>
+
+                    <div class="workflow-step">
+                        <div class="workflow-content">
+                            <h4>Final Pattern Preparation</h4>
+                            <p>Add seam allowances, notches, grainlines, and all necessary markings for production-ready patterns.</p>
+                        </div>
+                        <div class="workflow-number">6</div>
+                    </div>
+
+                    <div class="workflow-step">
+                        <div class="workflow-content">
+                            <h4>Grading & Production</h4>
+                            <p>Grade the pattern across size ranges and prepare technical packages for manufacturing or further development.</p>
+                        </div>
+                        <div class="workflow-number">7</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pattern Types -->
+    <section class="pattern-types">
+        <div class="container">
+            <h2 class="section-title">Types of Patterns</h2>
+            <div class="types-grid">
+                <div class="type-card">
+                    <div class="type-visual">
+                        <i class="fas fa-square"></i>
+                    </div>
+                    <div class="type-info">
+                        <h4>Basic Blocks/Slopers</h4>
+                        <p>Foundation patterns without seam allowances, used as the basis for creating all other pattern variations.</p>
+                        <div class="type-features">
+                            <span class="type-feature">No Seam Allowance</span>
+                            <span class="type-feature">Perfect Fit</span>
+                            <span class="type-feature">Foundation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="type-card">
+                    <div class="type-visual">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <div class="type-info">
+                        <h4>Working Patterns</h4>
+                        <p>Production-ready patterns with seam allowances, notches, and all construction details for manufacturing.</p>
+                        <div class="type-features">
+                            <span class="type-feature">Seam Allowances</span>
+                            <span class="type-feature">Notches</span>
+                            <span class="type-feature">Production Ready</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="type-card">
+                    <div class="type-visual">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <div class="type-info">
+                        <h4>Master Patterns</h4>
+                        <p>Finalized patterns stored as templates for creating size grades and production patterns across collections.</p>
+                        <div class="type-features">
+                            <span class="type-feature">Template</span>
+                            <span class="type-feature">Size Grading</span>
+                            <span class="type-feature">Archive</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="type-card">
+                    <div class="type-visual">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                    </div>
+                    <div class="type-info">
+                        <h4>Graded Patterns</h4>
+                        <p>Pattern sets that include multiple sizes with proportional adjustments for consistent fit across size ranges.</p>
+                        <div class="type-features">
+                            <span class="type-feature">Multiple Sizes</span>
+                            <span class="type-feature">Proportional</span>
+                            <span class="type-feature">Size Range</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="type-card">
+                    <div class="type-visual">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <div class="type-info">
+                        <h4>Marker Patterns</h4>
+                        <p>Efficient fabric layouts showing optimal placement of pattern pieces to minimize waste during cutting.</p>
+                        <div class="type-features">
+                            <span class="type-feature">Fabric Layout</span>
+                            <span class="type-feature">Waste Reduction</span>
+                            <span class="type-feature">Efficiency</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="type-card">
+                    <div class="type-visual">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <div class="type-info">
+                        <h4>Digital Patterns</h4>
+                        <p>Computer-generated patterns created and stored digitally for 3D visualization and automated production.</p>
+                        <div class="type-features">
+                            <span class="type-feature">Digital Format</span>
+                            <span class="type-feature">3D Compatible</span>
+                            <span class="type-feature">Automation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industry Standards -->
+    <section class="industry-standards">
+        <div class="container">
+            <h2 class="section-title">Industry Standards & Best Practices</h2>
+            <div class="standards-grid">
+                <div class="standard-card">
+                    <div class="standard-icon">
+                        <i class="fas fa-ruler"></i>
+                    </div>
+                    <h4>Measurement Standards</h4>
+                    <p>Following ASTM and ISO measurement standards ensures consistency and compatibility across global fashion manufacturing.</p>
+                </div>
+
+                <div class="standard-card">
+                    <div class="standard-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h4>Quality Control</h4>
+                    <p>Implementing systematic quality checks throughout pattern development maintains accuracy and reduces production errors.</p>
+                </div>
+
+                <div class="standard-card">
+                    <div class="standard-icon">
+                        <i class="fas fa-archive"></i>
+                    </div>
+                    <h4>Pattern Archive</h4>
+                    <p>Proper pattern storage and documentation systems enable efficient retrieval and modification for future collections.</p>
+                </div>
+
+                <div class="standard-card">
+                    <div class="standard-icon">
+                        <i class="fas fa-sync"></i>
+                    </div>
+                    <h4>Version Control</h4>
+                    <p>Maintaining pattern revision history and version control prevents confusion and ensures traceability in development.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Design Studio -->
+    <section style="padding: 40px 20px; text-align: center; background: white;">
+        <a href="index.html#design" class="btn btn-primary">
+            <i class="fas fa-arrow-left"></i> Back to Design Studio
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Fashionista</h3>
+                    <p>Celebrating the artistry and innovation of fashion design worldwide.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Design Tools</h4>
+                    <ul>
+                        <li><a href="color-theory.html">Color Theory</a></li>
+                        <li><a href="textile-design.html">Textile Design</a></li>
+                        <li><a href="digital-fashion.html">Digital Fashion</a></li>
+                        <li><a href="pattern-making.html">Pattern Making</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Collections</h4>
+                    <ul>
+                        <li><a href="avant-garde-couture.html">Avant-Garde Couture</a></li>
+                        <li><a href="sustainable-fashion.html">Sustainable Fashion</a></li>
+                        <li><a href="street-style-evolution.html">Street Style Evolution</a></li>
+                        <li><a href="heritage-revival.html">Heritage Revival</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Fashionista. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

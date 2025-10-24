@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Textile Design - Fashion Design Studio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Textile Design Specific Styles */
+        .textile-hero {
+            min-height: 70vh;
+            background: linear-gradient(135deg, #8B5A3C 0%, #D2691E 50%, #F4A460 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .textile-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="weavePattern" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse"><rect width="5" height="5" fill="rgba(255,255,255,0.1)"/><rect x="5" y="5" width="5" height="5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23weavePattern)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .textile-hero-content {
+            text-align: center;
+            color: white;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .textile-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .textile-hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        .tools-section {
+            padding: 80px 20px;
+            background: white;
+        }
+        
+        .tools-category {
+            margin-bottom: 5rem;
+        }
+        
+        .category-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .category-header h3 {
+            font-size: 2.5rem;
+            color: #8B5A3C;
+            margin-bottom: 1rem;
+        }
+        
+        .category-description {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #666;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .tool-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .tool-image {
+            height: 200px;
+            background: linear-gradient(45deg, #8B5A3C, #D2691E);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            position: relative;
+        }
+        
+        .tool-content {
+            padding: 1.5rem;
+        }
+        
+        .tool-content h4 {
+            color: #8B5A3C;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .tool-content p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .tool-specs {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+        
+        .tool-specs h5 {
+            color: #8B5A3C;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .tool-specs ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .tool-specs li {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+        
+        .tool-specs li::before {
+            content: '•';
+            color: #D2691E;
+            position: absolute;
+            left: 0;
+        }
+        
+        .traditional-tools {
+            background: #f8f9fa;
+        }
+        
+        .measuring-tools {
+            background: white;
+        }
+        
+        .fabric-formation {
+            background: #f8f9fa;
+        }
+        
+        .surface-decoration {
+            background: white;
+        }
+        
+        .modern-techniques {
+            background: #f8f9fa;
+        }
+        
+        .technique-showcase {
+            padding: 80px 20px;
+            background: white;
+        }
+        
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .showcase-item {
+            text-align: center;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+        
+        .showcase-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .showcase-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            background: linear-gradient(45deg, #8B5A3C, #D2691E);
+        }
+        
+        .showcase-item h4 {
+            color: #8B5A3C;
+            margin-bottom: 1rem;
+        }
+        
+        .showcase-item p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .process-timeline {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+        
+        .timeline-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: #D2691E;
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+        
+        .timeline-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            width: 45%;
+            margin: 0 2rem;
+        }
+        
+        .timeline-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #8B5A3C, #D2691E);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            z-index: 2;
+            border: 4px solid white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .timeline-content h4 {
+            color: #8B5A3C;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-content p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .sustainability-section {
+            padding: 80px 20px;
+            background: white;
+        }
+        
+        .sustainability-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .sustainability-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .sustainability-card:hover {
+            border-color: #D2691E;
+            transform: translateY(-5px);
+        }
+        
+        .sustainability-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(45deg, #27ae60, #2ecc71);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+        }
+        
+        .sustainability-card h4 {
+            color: #27ae60;
+            margin-bottom: 1rem;
+        }
+        
+        .sustainability-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .textile-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .tools-grid,
+            .showcase-grid,
+            .sustainability-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline-container::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                flex-direction: row !important;
+                padding-left: 60px;
+            }
+            
+            .timeline-item:nth-child(odd) {
+                flex-direction: row !important;
+            }
+            
+            .timeline-content {
+                width: 100%;
+                margin: 0;
+            }
+            
+            .timeline-icon {
+                position: absolute;
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2><a href="index.html" style="text-decoration: none; color: #667eea;">Fashionista</a></h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#collections" class="nav-link">Collections</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#design" class="nav-link">Design</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#trends" class="nav-link">Trends</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Textile Design Hero -->
+    <section class="textile-hero">
+        <div class="textile-hero-content">
+            <h1>Textile Design Mastery</h1>
+            <p>From traditional hand tools to cutting-edge technology, explore the complete world of textile creation and surface decoration</p>
+        </div>
+    </section>
+
+    <!-- Traditional Hand Tools Section -->
+    <section class="tools-section traditional-tools">
+        <div class="container">
+            <div class="tools-category">
+                <div class="category-header">
+                    <h3>Traditional Hand Tools</h3>
+                    <p class="category-description">
+                        Time-honored tools that have shaped textile creation for centuries. These fundamental instruments require skill and artistry, 
+                        connecting modern designers to the rich heritage of textile craftsmanship.
+                    </p>
+                </div>
+                <div class="tools-grid">
+                    <div class="tool-card">
+                        <div class="tool-image">
+                            <i class="fas fa-hand-paper"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Hand Loom</h4>
+                            <p>The foundation of traditional weaving, allowing complete control over tension, pattern, and texture. Essential for creating unique, artisanal fabrics.</p>
+                            <div class="tool-specs">
+                                <h5>Applications</h5>
+                                <ul>
+                                    <li>Custom fabric weaving</li>
+                                    <li>Prototype development</li>
+                                    <li>Artisanal textile creation</li>
+                                    <li>Educational purposes</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-image">
+                            <i class="fas fa-circle-notch"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Spinning Wheel</h4>
+                            <p>Traditional tool for converting raw fibers into yarn, offering control over twist, thickness, and texture that modern machines cannot replicate.</p>
+                            <div class="tool-specs">
+                                <h5>Benefits</h5>
+                                <ul>
+                                    <li>Custom yarn creation</li>
+                                    <li>Fiber blending control</li>
+                                    <li>Unique texture development</li>
+                                    <li>Sustainable practice</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-image">
+                            <i class="fas fa-hand-holding"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Hand Carders</h4>
+                            <p>Paired brushes used to align and blend fibers before spinning, essential for preparing raw materials and creating custom fiber blends.</p>
+                            <div class="tool-specs">
+                                <h5>Uses</h5>
+                                <ul>
+                                    <li>Fiber preparation</li>
+                                    <li>Color blending</li>
+                                    <li>Texture creation</li>
+                                    <li>Wool processing</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-image">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Drop Spindle</h4>
+                            <p>Ancient tool for creating yarn through gravity and momentum, perfect for portable spinning and developing fine motor skills in textile creation.</p>
+                            <div class="tool-specs">
+                                <h5>Advantages</h5>
+                                <ul>
+                                    <li>Portable spinning</li>
+                                    <li>Fine yarn control</li>
+                                    <li>Traditional technique</li>
+                                    <li>Meditative practice</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-image">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Tapestry Needles</h4>
+                            <p>Blunt-tipped needles designed for weaving through fabric without splitting threads, essential for tapestry work and fabric repair.</p>
+                            <div class="tool-specs">
+                                <h5>Applications</h5>
+                                <ul>
+                                    <li>Tapestry weaving</li>
+                                    <li>Embroidery work</li>
+                                    <li>Fabric darning</li>
+                                    <li>Detail finishing</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-image">
+                            <i class="fas fa-compress"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Bobbin Lace Pillow</h4>
+                            <p>Padded surface with pins for creating intricate lace patterns using multiple threads and bobbins, representing the pinnacle of textile artistry.</p>
+                            <div class="tool-specs">
+                                <h5>Features</h5>
+                                <ul>
+                                    <li>Pattern precision</li>
+                                    <li>Multiple thread management</li>
+                                    <li>Intricate design creation</li>
+                                    <li>Historical authenticity</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Measuring and Cutting Tools Section -->
+    <section class="tools-section measuring-tools">
+        <div class="container">
+            <div class="tools-category">
+                <div class="category-header">
+                    <h3>Measuring and Cutting Tools</h3>
+                    <p class="category-description">
+                        Precision instruments essential for accurate textile work. These tools ensure consistency, reduce waste, 
+                        and enable the creation of professional-quality textiles with exact specifications.
+                    </p>
+                </div>
+                <div class="tools-grid">
+                    <div class="tool-card">
+                        <div class="tool-image">
+                            <i class="fas fa-ruler-combined"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Quilter's Ruler</h4>
+                            <p>Transparent acrylic rulers with precise grid markings, essential for accurate cutting and measuring in textile work.</p>
+                            <div class="tool-specs">
+                                <h5>Features</h5>
+                                <ul>
+                                    <li>Multiple measurement units</li>
+                                    <li>Non-slip backing</li>
+                                    <li>Angle markings</li>
+                                    <li>Various sizes available</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-image">
+                            <i class="fas fa-cut"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Rotary Cutter</h4>
+                            <p>Sharp circular blade that rolls along fabric, providing clean, straight cuts through multiple layers with minimal effort.</p>
+                            <div class="tool-specs">
+                                <h5>Benefits</h5>
+                                <ul>
+                                    <li>Clean, precise cuts</li>
+                                    <li>Multiple layer cutting</li>
+                                    <li>Reduced hand fatigue</li>
+                                    <li>Speed and efficiency</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-image">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Cutting Mat</h4>
+                            <p>Self-healing surface designed to protect blades and work surfaces while providing measurement guidelines for accurate cutting.</p>
+                            <div class="tool-specs">
+                                <h5>Properties</h5>
+                                <ul>
+                                    <li>Self-healing surface</li>
+                                    <li>Grid measurement system</li>
+                                    <li>Blade protection</li>
+                                    <li>Multiple size options</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-image">
+                            <i class="fas fa-scissors"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Fabric Shears</h4>
+                            <p>Professional-grade scissors designed specifically for cutting fabric, with sharp blades and comfortable grips for precision work.</p>
+                            <div class="tool-specs">
+                                <h5>Specifications</h5>
+                                <ul>
+                                    <li>High-carbon steel blades</li>
+                                    <li>Ergonomic handles</li>
+                                    <li>Various blade lengths</li>
+                                    <li>Fabric-specific design</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-image">
+                            <i class="fas fa-tape"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Measuring Tape</h4>
+                            <p>Flexible measuring tool essential for body measurements, curved edges, and areas where rigid rulers cannot reach.</p>
+                            <div class="tool-specs">
+                                <h5>Applications</h5>
+                                <ul>
+                                    <li>Body measurements</li>
+                                    <li>Curved line measurement</li>
+                                    <li>Circumference calculation</li>
+                                    <li>Pattern adjustments</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-image">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Seam Gauge</h4>
+                            <p>Small ruler with adjustable slider for measuring consistent seam allowances, hems, and other small measurements.</p>
+                            <div class="tool-specs">
+                                <h5>Uses</h5>
+                                <ul>
+                                    <li>Seam allowance marking</li>
+                                    <li>Hem measurement</li>
+                                    <li>Button spacing</li>
+                                    <li>Small detail work</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fabric Formation Section -->
+    <section class="tools-section fabric-formation">
+        <div class="container">
+            <div class="tools-category">
+                <div class="category-header">
+                    <h3>Fabric Formation Techniques</h3>
+                    <p class="category-description">
+                        The fundamental methods of creating fabric from raw materials. These techniques form the structural foundation 
+                        of all textiles, each offering unique properties and aesthetic possibilities.
+                    </p>
+                </div>
+                <div class="tools-grid">
+                    <div class="tool-card">
+                        <div class="tool-image">
+                            <i class="fas fa-th"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Plain Weave</h4>
+                            <p>The most basic and stable weave structure, where weft threads pass over and under warp threads alternately.</p>
+                            <div class="tool-specs">
+                                <h5>Characteristics</h5>
+                                <ul>
+                                    <li>Maximum stability</li>
+                                    <li>Even surface texture</li>
+                                    <li>Good drape properties</li>
+                                    <li>Versatile applications</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-image">
+                            <i class="fas fa-th-large"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Twill Weave</h4>
+                            <p>Creates diagonal lines on fabric surface through systematic interlacing pattern, offering strength and flexibility.</p>
+                            <div class="tool-specs">
+                                <h5>Properties</h5>
+                                <ul>
+                                    <li>Diagonal line pattern</li>
+                                    <li>High durability</li>
+                                    <li>Excellent drape</li>
+                                    <li>Wrinkle resistance</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-image">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Satin Weave</h4>
+                            <p>Float-dominated weave creating smooth, lustrous surface with minimal interlacing points for maximum sheen.</p>
+                            <div class="tool-specs">
+                                <h5>Features</h5>
+                                <ul>
+                                    <li>High surface luster</li>
+                                    <li>Smooth texture</li>
+                                    <li>Luxurious appearance</li>
+                                    <li>Delicate handling required</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-image">
+                            <i class="fas fa-circle"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Knitting</h4>
+                            <p>Interlocking loops of yarn creating stretchy, flexible fabrics ideal for fitted garments and comfort wear.</p>
+                            <div class="tool-specs">
+                                <h5>Advantages</h5>
+                                <ul>
+                                    <li>Natural stretch</li>
+                                    <li>Comfort and fit</li>
+                                    <li>Shape retention</li>
+                                    <li>Versatile patterns</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-image">
+                            <i class="fas fa-wind"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Felting</h4>
+                            <p>Non-woven fabric formation through fiber matting using heat, moisture, and pressure to create dense, warm materials.</p>
+                            <div class="tool-specs">
+                                <h5>Properties</h5>
+                                <ul>
+                                    <li>Excellent insulation</li>
+                                    <li>Water resistance</li>
+                                    <li>Dense structure</li>
+                                    <li>Cut edge stability</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-image">
+                            <i class="fas fa-snowflake"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Lace Making</h4>
+                            <p>Delicate openwork fabric created through various techniques including bobbin lace, needle lace, and crochet methods.</p>
+                            <div class="tool-specs">
+                                <h5>Techniques</h5>
+                                <ul>
+                                    <li>Bobbin lace</li>
+                                    <li>Needle lace</li>
+                                    <li>Tatting</li>
+                                    <li>Machine lace</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Surface Decoration Section -->
+    <section class="tools-section surface-decoration">
+        <div class="container">
+            <div class="tools-category">
+                <div class="category-header">
+                    <h3>Surface Decoration Techniques</h3>
+                    <p class="category-description">
+                        Methods for enhancing fabric surfaces with color, texture, and pattern. These techniques transform plain textiles 
+                        into works of art, adding value and visual interest to any design.
+                    </p>
+                </div>
+                <div class="tools-grid">
+                    <div class="tool-card">
+                        <div class="tool-image">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Hand Painting</h4>
+                            <p>Direct application of dyes or paints to fabric surface, allowing for unique artistic expression and custom designs.</p>
+                            <div class="tool-specs">
+                                <h5>Methods</h5>
+                                <ul>
+                                    <li>Brush techniques</li>
+                                    <li>Spray application</li>
+                                    <li>Freehand painting</li>
+                                    <li>Stencil work</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-image">
+                            <i class="fas fa-stamp"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Block Printing</h4>
+                            <p>Traditional technique using carved blocks to transfer repeated patterns onto fabric with precision and consistency.</p>
+                            <div class="tool-specs">
+                                <h5>Advantages</h5>
+                                <ul>
+                                    <li>Repeat pattern creation</li>
+                                    <li>Handcrafted aesthetic</li>
+                                    <li>Cost-effective production</li>
+                                    <li>Cultural authenticity</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-image">
+                            <i class="fas fa-water"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Tie-Dye & Resist</h4>
+                            <p>Creating patterns by preventing dye penetration in specific areas through binding, wax, or other resist materials.</p>
+                            <div class="tool-specs">
+                                <h5>Techniques</h5>
+                                <ul>
+                                    <li>Shibori (Japanese resist)</li>
+                                    <li>Batik (wax resist)</li>
+                                    <li>Tie-dye binding</li>
+                                    <li>Starch resist</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-image">
+                            <i class="fas fa-needle"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Embroidery</h4>
+                            <p>Decorative stitching technique adding texture, color, and dimension to fabric surfaces through thread work.</p>
+                            <div class="tool-specs">
+                                <h5>Styles</h5>
+                                <ul>
+                                    <li>Hand embroidery</li>
+                                    <li>Machine embroidery</li>
+                                    <li>Cross-stitch</li>
+                                    <li>Crewel work</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-image">
+                            <i class="fas fa-gem"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Beadwork & Sequins</h4>
+                            <p>Adding dimensional elements to fabric surfaces through the application of beads, sequins, and other decorative materials.</p>
+                            <div class="tool-specs">
+                                <h5>Applications</h5>
+                                <ul>
+                                    <li>Evening wear</li>
+                                    <li>Cultural garments</li>
+                                    <li>Haute couture</li>
+                                    <li>Accessories</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-image">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Heat Transfer</h4>
+                            <p>Modern technique using heat and pressure to apply designs, foils, or specialized materials to fabric surfaces.</p>
+                            <div class="tool-specs">
+                                <h5>Methods</h5>
+                                <ul>
+                                    <li>Vinyl transfers</li>
+                                    <li>Foil application</li>
+                                    <li>Heat press designs</li>
+                                    <li>Sublimation printing</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modern and Advanced Techniques Section -->
+    <section class="tools-section modern-techniques">
+        <div class="container">
+            <div class="tools-category">
+                <div class="category-header">
+                    <h3>Modern and Advanced Techniques</h3>
+                    <p class="category-description">
+                        Cutting-edge technologies and innovative methods pushing the boundaries of textile design. 
+                        These advanced techniques enable unprecedented precision, efficiency, and creative possibilities.
+                    </p>
+                </div>
+                <div class="tools-grid">
+                    <div class="tool-card">
+                        <div class="tool-image">
+                            <i class="fas fa-print"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Digital Printing</h4>
+                            <p>Computer-controlled printing technology enabling complex, photorealistic designs with unlimited color possibilities.</p>
+                            <div class="tool-specs">
+                                <h5>Capabilities</h5>
+                                <ul>
+                                    <li>Unlimited color range</li>
+                                    <li>Photographic quality</li>
+                                    <li>No setup costs</li>
+                                    <li>Small batch production</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-image">
+                            <i class="fas fa-cube"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>3D Textile Printing</h4>
+                            <p>Revolutionary technology creating three-dimensional textile structures through additive manufacturing processes.</p>
+                            <div class="tool-specs">
+                                <h5>Innovations</h5>
+                                <ul>
+                                    <li>Complex geometries</li>
+                                    <li>Integrated functionality</li>
+                                    <li>Waste reduction</li>
+                                    <li>Customization</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-image">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Laser Cutting</h4>
+                            <p>Precision cutting technology using focused laser beams for intricate patterns, clean edges, and sealed cut prevention.</p>
+                            <div class="tool-specs">
+                                <h5>Benefits</h5>
+                                <ul>
+                                    <li>Precision cutting</li>
+                                    <li>Intricate patterns</li>
+                                    <li>Clean, sealed edges</li>
+                                    <li>No tool wear</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-image">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Computer-Aided Design</h4>
+                            <p>Software solutions for pattern creation, textile design, and manufacturing optimization through digital workflows.</p>
+                            <div class="tool-specs">
+                                <h5>Features</h5>
+                                <ul>
+                                    <li>Pattern development</li>
+                                    <li>Color simulation</li>
+                                    <li>Production planning</li>
+                                    <li>Quality control</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-image">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Smart Textiles</h4>
+                            <p>Integration of electronic components and sensors into fabrics, creating responsive and interactive textile materials.</p>
+                            <div class="tool-specs">
+                                <h5>Applications</h5>
+                                <ul>
+                                    <li>Wearable technology</li>
+                                    <li>Health monitoring</li>
+                                    <li>Environmental response</li>
+                                    <li>Performance enhancement</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-image">
+                            <i class="fas fa-atom"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Nanotechnology</h4>
+                            <p>Molecular-level textile treatment enabling properties like water resistance, antimicrobial effects, and enhanced durability.</p>
+                            <div class="tool-specs">
+                                <h5>Properties</h5>
+                                <ul>
+                                    <li>Water repellency</li>
+                                    <li>Antimicrobial treatment</li>
+                                    <li>UV protection</li>
+                                    <li>Enhanced strength</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Timeline -->
+    <section class="process-timeline">
+        <div class="container">
+            <h2 class="section-title">Textile Creation Process</h2>
+            <div class="timeline-container">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>Fiber Preparation</h4>
+                        <p>Raw materials are cleaned, sorted, and prepared for processing. This includes carding, combing, and blending to achieve desired properties.</p>
+                    </div>
+                    <div class="timeline-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>Yarn Formation</h4>
+                        <p>Fibers are twisted together to create continuous yarn through spinning processes, determining strength and texture characteristics.</p>
+                    </div>
+                    <div class="timeline-icon">
+                        <i class="fas fa-circle-notch"></i>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>Fabric Construction</h4>
+                        <p>Yarns are interlaced through weaving, knitting, or other formation techniques to create the basic fabric structure.</p>
+                    </div>
+                    <div class="timeline-icon">
+                        <i class="fas fa-th"></i>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>Surface Treatment</h4>
+                        <p>Fabrics undergo finishing processes including dyeing, printing, and chemical treatments to achieve desired appearance and properties.</p>
+                    </div>
+                    <div class="timeline-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>Quality Control</h4>
+                        <p>Final inspection and testing ensure fabric meets specifications for strength, color fastness, and performance standards.</p>
+                    </div>
+                    <div class="timeline-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sustainability Section -->
+    <section class="sustainability-section">
+        <div class="container">
+            <h2 class="section-title">Sustainable Textile Practices</h2>
+            <div class="sustainability-grid">
+                <div class="sustainability-card">
+                    <div class="sustainability-icon">
+                        <i class="fas fa-recycle"></i>
+                    </div>
+                    <h4>Eco-Friendly Materials</h4>
+                    <p>Using organic, recycled, and biodegradable fibers to minimize environmental impact while maintaining quality standards.</p>
+                </div>
+
+                <div class="sustainability-card">
+                    <div class="sustainability-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <h4>Water Conservation</h4>
+                    <p>Implementing water-efficient dyeing processes and closed-loop systems to reduce consumption and pollution.</p>
+                </div>
+
+                <div class="sustainability-card">
+                    <div class="sustainability-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h4>Natural Dyes</h4>
+                    <p>Utilizing plant-based and mineral dyes as alternatives to synthetic chemicals for environmentally conscious coloration.</p>
+                </div>
+
+                <div class="sustainability-card">
+                    <div class="sustainability-icon">
+                        <i class="fas fa-undo"></i>
+                    </div>
+                    <h4>Circular Design</h4>
+                    <p>Creating textiles with end-of-life considerations, enabling recycling and upcycling for continuous material cycles.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Design Studio -->
+    <section style="padding: 40px 20px; text-align: center; background: white;">
+        <a href="index.html#design" class="btn btn-primary">
+            <i class="fas fa-arrow-left"></i> Back to Design Studio
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Fashionista</h3>
+                    <p>Celebrating the artistry and innovation of fashion design worldwide.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Design Tools</h4>
+                    <ul>
+                        <li><a href="color-theory.html">Color Theory</a></li>
+                        <li><a href="textile-design.html">Textile Design</a></li>
+                        <li><a href="#">Pattern Making</a></li>
+                        <li><a href="#">3D Modeling</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Collections</h4>
+                    <ul>
+                        <li><a href="avant-garde-couture.html">Avant-Garde Couture</a></li>
+                        <li><a href="sustainable-fashion.html">Sustainable Fashion</a></li>
+                        <li><a href="street-style-evolution.html">Street Style Evolution</a></li>
+                        <li><a href="heritage-revival.html">Heritage Revival</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Fashionista. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailoring - Fashion Design Studio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Tailoring Specific Styles */
+        .tailoring-hero {
+            min-height: 70vh;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tailoring-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="threadPattern" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="0.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23threadPattern)"/></svg>');
+            opacity: 0.4;
+        }
+        
+        .tailoring-hero-content {
+            text-align: center;
+            color: white;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .tailoring-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .tailoring-hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        .tools-section {
+            padding: 80px 20px;
+        }
+        
+        .tools-category {
+            margin-bottom: 5rem;
+        }
+        
+        .category-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .category-header h3 {
+            font-size: 2.5rem;
+            color: #16213e;
+            margin-bottom: 1rem;
+        }
+        
+        .category-description {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #666;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .tool-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            border: 3px solid transparent;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 55px rgba(0, 0, 0, 0.2);
+            border-color: #0f3460;
+        }
+        
+        .tool-header {
+            height: 180px;
+            background: linear-gradient(135deg, #1a1a2e, #0f3460);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.8rem;
+            position: relative;
+        }
+        
+        .tool-content {
+            padding: 2rem;
+        }
+        
+        .tool-content h4 {
+            color: #16213e;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .tool-badge {
+            background: linear-gradient(45deg, #0f3460, #16213e);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+        
+        .tool-content p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .tool-specs {
+            background: #f8f9fa;
+            padding: 1.2rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+        
+        .tool-specs h5 {
+            color: #16213e;
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+        
+        .spec-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 0.5rem;
+        }
+        
+        .spec-item {
+            background: white;
+            padding: 0.6rem;
+            border-radius: 8px;
+            text-align: center;
+            color: #666;
+            font-size: 0.85rem;
+            border: 2px solid #e9ecef;
+            transition: all 0.2s ease;
+        }
+        
+        .spec-item:hover {
+            border-color: #0f3460;
+            color: #16213e;
+        }
+        
+        .price-info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 2px solid #e9ecef;
+        }
+        
+        .price-label {
+            color: #666;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .price-value {
+            color: #0f3460;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .hand-tools {
+            background: white;
+        }
+        
+        .sewing-tools {
+            background: #f8f9fa;
+        }
+        
+        .pressing-tools {
+            background: white;
+        }
+        
+        .measuring-tools {
+            background: #f8f9fa;
+        }
+        
+        .techniques-section {
+            padding: 80px 20px;
+            background: white;
+        }
+        
+        .techniques-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .technique-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+        }
+        
+        .technique-card:hover {
+            transform: translateY(-8px);
+            border-color: #0f3460;
+            background: white;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .technique-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            background: linear-gradient(45deg, #1a1a2e, #0f3460);
+        }
+        
+        .technique-card h4 {
+            color: #16213e;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .technique-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .skill-level {
+            display: inline-block;
+            background: linear-gradient(45deg, #0f3460, #16213e);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        .craftsmanship-section {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #1a1a2e, #0f3460);
+            color: white;
+        }
+        
+        .craftsmanship-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .craft-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.4s ease;
+        }
+        
+        .craft-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+        
+        .craft-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+        }
+        
+        .craft-card h4 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .craft-card p {
+            line-height: 1.7;
+            opacity: 0.9;
+        }
+        
+        .garment-types {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+        
+        .garment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .garment-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+        }
+        
+        .garment-card:hover {
+            transform: translateY(-10px);
+            border-color: #16213e;
+        }
+        
+        .garment-visual {
+            height: 150px;
+            background: linear-gradient(45deg, #1a1a2e, #0f3460);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+        }
+        
+        .garment-info {
+            padding: 1.5rem;
+        }
+        
+        .garment-info h4 {
+            color: #16213e;
+            margin-bottom: 1rem;
+        }
+        
+        .garment-info p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .garment-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .garment-feature {
+            background: #f8f9fa;
+            color: #16213e;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid #e9ecef;
+        }
+        
+        @media (max-width: 768px) {
+            .tailoring-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .tools-grid,
+            .techniques-grid,
+            .craftsmanship-grid,
+            .garment-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2><a href="index.html" style="text-decoration: none; color: #667eea;">Fashionista</a></h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#collections" class="nav-link">Collections</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#design" class="nav-link">Design</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#trends" class="nav-link">Trends</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Tailoring Hero -->
+    <section class="tailoring-hero">
+        <div class="tailoring-hero-content">
+            <h1>The Art of Tailoring</h1>
+            <p>Master the timeless craft of bespoke tailoring with professional tools, precision techniques, and expert craftsmanship</p>
+        </div>
+    </section>
+
+    <!-- Hand Tools Section -->
+    <section class="tools-section hand-tools">
+        <div class="container">
+            <div class="tools-category">
+                <div class="category-header">
+                    <h3>Essential Hand Tools</h3>
+                    <p class="category-description">
+                        The fundamental tools every tailor needs for precision handwork, finishing details, and creating 
+                        bespoke garments with traditional craftsmanship and attention to detail.
+                    </p>
+                </div>
+                <div class="tools-grid">
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-sewing-machine"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Hand Sewing Needles <span class="tool-badge">Essential</span></h4>
+                            <p>Professional hand sewing needles in various sizes for different fabric weights and stitching techniques, from basting to fine finishing work.</p>
+                            <div class="tool-specs">
+                                <h5>Needle Types</h5>
+                                <div class="spec-grid">
+                                    <div class="spec-item">Sharps</div>
+                                    <div class="spec-item">Betweens</div>
+                                    <div class="spec-item">Milliners</div>
+                                    <div class="spec-item">Embroidery</div>
+                                </div>
+                            </div>
+                            <div class="price-info">
+                                <span class="price-label">Professional Set</span>
+                                <span class="price-value">$8-15</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-cut"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Tailor's Shears <span class="tool-badge">Professional</span></h4>
+                            <p>Heavy-duty fabric scissors with offset handles for precise cutting close to the work surface, essential for clean, accurate cuts.</p>
+                            <div class="tool-specs">
+                                <h5>Features</h5>
+                                <div class="spec-grid">
+                                    <div class="spec-item">8-12 inches</div>
+                                    <div class="spec-item">Offset Handle</div>
+                                    <div class="spec-item">Steel Blades</div>
+                                    <div class="spec-item">Sharp Point</div>
+                                </div>
+                            </div>
+                            <div class="price-info">
+                                <span class="price-label">Professional</span>
+                                <span class="price-value">$45-120</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-thumbtack"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Tailor's Pins <span class="tool-badge">Precision</span></h4>
+                            <p>Fine, sharp pins designed for precise fabric marking and holding without leaving visible holes in delicate materials.</p>
+                            <div class="tool-specs">
+                                <h5>Pin Types</h5>
+                                <div class="spec-grid">
+                                    <div class="spec-item">Glass Head</div>
+                                    <div class="spec-item">Steel Pins</div>
+                                    <div class="spec-item">Silk Pins</div>
+                                    <div class="spec-item">Extra Fine</div>
+                                </div>
+                            </div>
+                            <div class="price-info">
+                                <span class="price-label">Premium Set</span>
+                                <span class="price-value">$12-25</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-pencil-alt"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Tailor's Chalk <span class="tool-badge">Marking</span></h4>
+                            <p>Marking tools for temporary fabric marking, including traditional chalk, pencils, and modern disappearing markers.</p>
+                            <div class="tool-specs">
+                                <h5>Marking Options</h5>
+                                <div class="spec-grid">
+                                    <div class="spec-item">Triangle Chalk</div>
+                                    <div class="spec-item">Chalk Pencils</div>
+                                    <div class="spec-item">Water Soluble</div>
+                                    <div class="spec-item">Heat Erasable</div>
+                                </div>
+                            </div>
+                            <div class="price-info">
+                                <span class="price-label">Complete Set</span>
+                                <span class="price-value">$8-18</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-compress-arrows-alt"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Seam Ripper <span class="tool-badge">Essential</span></h4>
+                            <p>Precision tool for removing stitches cleanly without damaging fabric, essential for alterations and corrections.</p>
+                            <div class="tool-specs">
+                                <h5>Features</h5>
+                                <div class="spec-grid">
+                                    <div class="spec-item">Sharp Point</div>
+                                    <div class="spec-item">Safety Ball</div>
+                                    <div class="spec-item">Ergonomic</div>
+                                    <div class="spec-item">Protective Cap</div>
+                                </div>
+                            </div>
+                            <div class="price-info">
+                                <span class="price-label">Professional</span>
+                                <span class="price-value">$5-12</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-hand-paper"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Thimble <span class="tool-badge">Protection</span></h4>
+                            <p>Finger protection for hand sewing, available in various materials and styles for comfort and precision during extended sewing sessions.</p>
+                            <div class="tool-specs">
+                                <h5>Types</h5>
+                                <div class="spec-grid">
+                                    <div class="spec-item">Metal Thimble</div>
+                                    <div class="spec-item">Leather Thimble</div>
+                                    <div class="spec-item">Rubber Thimble</div>
+                                    <div class="spec-item">Adjustable</div>
+                                </div>
+                            </div>
+                            <div class="price-info">
+                                <span class="price-label">Quality</span>
+                                <span class="price-value">$5-20</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sewing Machines Section -->
+    <section class="tools-section sewing-tools">
+        <div class="container">
+            <div class="tools-category">
+                <div class="category-header">
+                    <h3>Professional Sewing Machines</h3>
+                    <p class="category-description">
+                        Industrial and domestic sewing machines designed for professional tailoring work, offering precision stitching, 
+                        durability, and specialized functions for various tailoring techniques.
+                    </p>
+                </div>
+                <div class="tools-grid">
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-industry"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Industrial Lockstitch Machine <span class="tool-badge">Professional</span></h4>
+                            <p>High-speed industrial sewing machine for straight stitching through multiple layers of heavy fabrics with consistency and precision.</p>
+                            <div class="tool-specs">
+                                <h5>Specifications</h5>
+                                <div class="spec-grid">
+                                    <div class="spec-item">5000 SPM</div>
+                                    <div class="spec-item">Heavy Duty</div>
+                                    <div class="spec-item">Auto Threading</div>
+                                    <div class="spec-item">Servo Motor</div>
+                                </div>
+                            </div>
+                            <div class="price-info">
+                                <span class="price-label">Industrial</span>
+                                <span class="price-value">$800-2000</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-bezier-curve"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Overlock/Serger Machine <span class="tool-badge">Essential</span></h4>
+                            <p>Specialized machine for finishing seam edges, creating professional rolled hems, and sewing stretch fabrics with multiple threads.</p>
+                            <div class="tool-specs">
+                                <h5>Capabilities</h5>
+                                <div class="spec-grid">
+                                    <div class="spec-item">3/4/5 Thread</div>
+                                    <div class="spec-item">Edge Finishing</div>
+                                    <div class="spec-item">Differential Feed</div>
+                                    <div class="spec-item">Rolled Hem</div>
+                                </div>
+                            </div>
+                            <div class="price-info">
+                                <span class="price-label">Professional</span>
+                                <span class="price-value">$400-1500</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-circle"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Buttonhole Machine <span class="tool-badge">Specialized</span></h4>
+                            <p>Dedicated machine for creating precise, professional buttonholes in various sizes and styles for tailored garments.</p>
+                            <div class="tool-specs">
+                                <h5>Features</h5>
+                                <div class="spec-grid">
+                                    <div class="spec-item">Keyhole Style</div>
+                                    <div class="spec-item">Auto Sizing</div>
+                                    <div class="spec-item">Precision Cut</div>
+                                    <div class="spec-item">Adjustable</div>
+                                </div>
+                            </div>
+                            <div class="price-info">
+                                <span class="price-label">Industrial</span>
+                                <span class="price-value">$600-1800</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-compress"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Blind Hem Machine <span class="tool-badge">Specialized</span></h4>
+                            <p>Specialized machine for creating invisible hems on trousers and skirts, essential for professional finishing in tailoring.</p>
+                            <div class="tool-specs">
+                                <h5>Functions</h5>
+                                <div class="spec-grid">
+                                    <div class="spec-item">Invisible Hem</div>
+                                    <div class="spec-item">Adjustable</div>
+                                    <div class="spec-item">Guide System</div>
+                                    <div class="spec-item">Clean Finish</div>
+                                </div>
+                            </div>
+                            <div class="price-info">
+                                <span class="price-label">Industrial</span>
+                                <span class="price-value">$500-1400</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pressing Tools Section -->
+    <section class="tools-section pressing-tools">
+        <div class="container">
+            <div class="tools-category">
+                <div class="category-header">
+                    <h3>Pressing & Finishing Tools</h3>
+                    <p class="category-description">
+                        Professional pressing equipment essential for shaping garments, setting seams, and achieving the crisp, 
+                        polished finish that distinguishes quality tailoring from standard sewing.
+                    </p>
+                </div>
+                <div class="tools-grid">
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Professional Steam Iron <span class="tool-badge">Essential</span></h4>
+                            <p>Heavy-duty steam iron with consistent high heat and powerful steam output for professional pressing and garment shaping.</p>
+                            <div class="tool-specs">
+                                <h5>Features</h5>
+                                <div class="spec-grid">
+                                    <div class="spec-item">2400W Heat</div>
+                                    <div class="spec-item">Steam Burst</div>
+                                    <div class="spec-item">Gravity Feed</div>
+                                    <div class="spec-item">Heavy Base</div>
+                                </div>
+                            </div>
+                            <div class="price-info">
+                                <span class="price-label">Professional</span>
+                                <span class="price-value">$150-400</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Steam Generator System <span class="tool-badge">Industrial</span></h4>
+                            <p>Commercial steam generation system providing continuous, powerful steam for professional tailoring and alteration shops.</p>
+                            <div class="tool-specs">
+                                <h5>System Features</h5>
+                                <div class="spec-grid">
+                                    <div class="spec-item">Continuous Steam</div>
+                                    <div class="spec-item">High Pressure</div>
+                                    <div class="spec-item">Large Reservoir</div>
+                                    <div class="spec-item">Boiler System</div>
+                                </div>
+                            </div>
+                            <div class="price-info">
+                                <span class="price-label">Industrial</span>
+                                <span class="price-value">$800-3000</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-table"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Pressing Board & Ham <span class="tool-badge">Shaping</span></h4>
+                            <p>Specialized pressing surfaces for shaping curved areas, darts, and three-dimensional garment components with precision.</p>
+                            <div class="tool-specs">
+                                <h5>Tools Include</h5>
+                                <div class="spec-grid">
+                                    <div class="spec-item">Tailor's Ham</div>
+                                    <div class="spec-item">Sleeve Board</div>
+                                    <div class="spec-item">Seam Roll</div>
+                                    <div class="spec-item">Point Presser</div>
+                                </div>
+                            </div>
+                            <div class="price-info">
+                                <span class="price-label">Complete Set</span>
+                                <span class="price-value">$80-200</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-hand-holding-water"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Pressing Cloths <span class="tool-badge">Protection</span></h4>
+                            <p>Protective fabric layers preventing shine and scorching while allowing steam penetration for delicate fabric pressing.</p>
+                            <div class="tool-specs">
+                                <h5>Cloth Types</h5>
+                                <div class="spec-grid">
+                                    <div class="spec-item">Muslin</div>
+                                    <div class="spec-item">Wool</div>
+                                    <div class="spec-item">Silk Organza</div>
+                                    <div class="spec-item">Teflon Sheet</div>
+                                </div>
+                            </div>
+                            <div class="price-info">
+                                <span class="price-label">Professional Set</span>
+                                <span class="price-value">$25-60</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Measuring Tools Section -->
+    <section class="tools-section measuring-tools">
+        <div class="container">
+            <div class="tools-category">
+                <div class="category-header">
+                    <h3>Precision Measuring Tools</h3>
+                    <p class="category-description">
+                        Accurate measuring instruments critical for bespoke tailoring, ensuring perfect fit through 
+                        precise body measurements and garment specifications.
+                    </p>
+                </div>
+                <div class="tools-grid">
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-tape"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Tailor's Measuring Tape <span class="tool-badge">Essential</span></h4>
+                            <p>Flexible measuring tape with metal tips and clear markings for accurate body and garment measurements in tailoring.</p>
+                            <div class="tool-specs">
+                                <h5>Specifications</h5>
+                                <div class="spec-grid">
+                                    <div class="spec-item">60" Length</div>
+                                    <div class="spec-item">Metal Tips</div>
+                                    <div class="spec-item">Both Sides</div>
+                                    <div class="spec-item">Non-stretch</div>
+                                </div>
+                            </div>
+                            <div class="price-info">
+                                <span class="price-label">Professional</span>
+                                <span class="price-value">$8-15</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-ruler-horizontal"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Tailor's Square <span class="tool-badge">Precision</span></h4>
+                            <p>L-shaped measuring tool for creating perfect right angles and accurate measurements in pattern making and alteration work.</p>
+                            <div class="tool-specs">
+                                <h5>Features</h5>
+                                <div class="spec-grid">
+                                    <div class="spec-item">Right Angle</div>
+                                    <div class="spec-item">Clear Markings</div>
+                                    <div class="spec-item">Metal/Acrylic</div>
+                                    <div class="spec-item">Various Sizes</div>
+                                </div>
+                            </div>
+                            <div class="price-info">
+                                <span class="price-label">Professional</span>
+                                <span class="price-value">$15-35</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-ruler"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Hem Gauge <span class="tool-badge">Accuracy</span></h4>
+                            <p>Small ruler with sliding marker for measuring and marking consistent hem depths, seam allowances, and small details.</p>
+                            <div class="tool-specs">
+                                <h5>Uses</h5>
+                                <div class="spec-grid">
+                                    <div class="spec-item">Hem Marking</div>
+                                    <div class="spec-item">Seam Allowance</div>
+                                    <div class="spec-item">Button Spacing</div>
+                                    <div class="spec-item">Pleats</div>
+                                </div>
+                            </div>
+                            <div class="price-info">
+                                <span class="price-label">Standard</span>
+                                <span class="price-value">$5-12</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Dress Form/Mannequin <span class="tool-badge">Fitting</span></h4>
+                            <p>Adjustable professional dress form for fitting, draping, and garment construction with accurate body proportions.</p>
+                            <div class="tool-specs">
+                                <h5>Features</h5>
+                                <div class="spec-grid">
+                                    <div class="spec-item">Adjustable Size</div>
+                                    <div class="spec-item">Collapsible</div>
+                                    <div class="spec-item">Pin-able</div>
+                                    <div class="spec-item">Height Adjust</div>
+                                </div>
+                            </div>
+                            <div class="price-info">
+                                <span class="price-label">Professional</span>
+                                <span class="price-value">$200-800</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tailoring Techniques -->
+    <section class="techniques-section">
+        <div class="container">
+            <h2 class="section-title">Essential Tailoring Techniques</h2>
+            <div class="techniques-grid">
+                <div class="technique-card">
+                    <div class="technique-icon">
+                        <i class="fas fa-stitch"></i>
+                    </div>
+                    <h4>Hand Basting</h4>
+                    <p>Temporary stitching technique for holding fabric layers together during fitting and construction before permanent sewing.</p>
+                    <span class="skill-level">Beginner</span>
+                </div>
+
+                <div class="technique-card">
+                    <div class="technique-icon">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h4>Pad Stitching</h4>
+                    <p>Traditional hand stitching method for shaping and reinforcing lapels and collars, creating permanent structure in tailored jackets.</p>
+                    <span class="skill-level">Advanced</span>
+                </div>
+
+                <div class="technique-card">
+                    <div class="technique-icon">
+                        <i class="fas fa-compress-alt"></i>
+                    </div>
+                    <h4>Pressing & Shaping</h4>
+                    <p>Using heat, steam, and pressure to mold fabric into three-dimensional shapes, essential for professional tailoring finish.</p>
+                    <span class="skill-level">Intermediate</span>
+                </div>
+
+                <div class="technique-card">
+                    <div class="technique-icon">
+                        <i class="fas fa-shoe-prints"></i>
+                    </div>
+                    <h4>Buttonhole Making</h4>
+                    <p>Creating reinforced openings for buttons, including keyhole, straight, and bound buttonholes for different garment types.</p>
+                    <span class="skill-level">Advanced</span>
+                </div>
+
+                <div class="technique-card">
+                    <div class="technique-icon">
+                        <i class="fas fa-adjust"></i>
+                    </div>
+                    <h4>Fitting & Alteration</h4>
+                    <p>Analyzing garment fit and making precise adjustments to achieve perfect fit for individual body measurements.</p>
+                    <span class="skill-level">Expert</span>
+                </div>
+
+                <div class="technique-card">
+                    <div class="technique-icon">
+                        <i class="fas fa-border-style"></i>
+                    </div>
+                    <h4>Edge Finishing</h4>
+                    <p>Professional seam and edge treatments including French seams, Hong Kong finish, and bound edges for clean interiors.</p>
+                    <span class="skill-level">Intermediate</span>
+                </div>
+
+                <div class="technique-card">
+                    <div class="technique-icon">
+                        <i class="fas fa-vest"></i>
+                    </div>
+                    <h4>Canvas Construction</h4>
+                    <p>Traditional method of building structured jackets using hair canvas, hand stitching, and precise pressing techniques.</p>
+                    <span class="skill-level">Expert</span>
+                </div>
+
+                <div class="technique-card">
+                    <div class="technique-icon">
+                        <i class="fas fa-compress"></i>
+                    </div>
+                    <h4>Blind Hemming</h4>
+                    <p>Creating invisible hems using hand stitches or machine techniques, essential for professional trouser and skirt finishing.</p>
+                    <span class="skill-level">Intermediate</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Craftsmanship Excellence -->
+    <section class="craftsmanship-section">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Hallmarks of Fine Tailoring</h2>
+            <div class="craftsmanship-grid">
+                <div class="craft-card">
+                    <div class="craft-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h4>Attention to Detail</h4>
+                    <p>Every stitch, seam, and finish is executed with precision and care, creating garments that stand the test of time.</p>
+                </div>
+
+                <div class="craft-card">
+                    <div class="craft-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h4>Perfect Balance</h4>
+                    <p>Achieving visual and structural balance in garment construction, ensuring proper drape, hang, and comfort.</p>
+                </div>
+
+                <div class="craft-card">
+                    <div class="craft-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h4>Quality Materials</h4>
+                    <p>Selecting premium fabrics, interfacings, and notions that enhance durability and elevate the finished garment.</p>
+                </div>
+
+                <div class="craft-card">
+                    <div class="craft-icon">
+                        <i class="fas fa-ruler-combined"></i>
+                    </div>
+                    <h4>Precise Measurements</h4>
+                    <p>Accurate body measurements and pattern adjustments ensure exceptional fit unique to each client's physique.</p>
+                </div>
+
+                <div class="craft-card">
+                    <div class="craft-icon">
+                        <i class="fas fa-hands"></i>
+                    </div>
+                    <h4>Handwork Excellence</h4>
+                    <p>Traditional hand sewing techniques that add structure, flexibility, and refinement impossible to achieve by machine.</p>
+                </div>
+
+                <div class="craft-card">
+                    <div class="craft-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h4>Timeless Style</h4>
+                    <p>Creating classic silhouettes that transcend trends, combining tradition with contemporary aesthetic sensibilities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Garment Types -->
+    <section class="garment-types">
+        <div class="container">
+            <h2 class="section-title">Tailored Garment Specialties</h2>
+            <div class="garment-grid">
+                <div class="garment-card">
+                    <div class="garment-visual">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="garment-info">
+                        <h4>Bespoke Suits</h4>
+                        <p>Fully custom suits crafted from individual measurements with multiple fittings and hand-finished details.</p>
+                        <div class="garment-features">
+                            <span class="garment-feature">Hand Canvas</span>
+                            <span class="garment-feature">Multiple Fittings</span>
+                            <span class="garment-feature">Custom Pattern</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="garment-card">
+                    <div class="garment-visual">
+                        <i class="fas fa-vest"></i>
+                    </div>
+                    <div class="garment-info">
+                        <h4>Dress Shirts</h4>
+                        <p>Made-to-measure shirts with precise collar, cuff, and body measurements for perfect fit and comfort.</p>
+                        <div class="garment-features">
+                            <span class="garment-feature">Collar Styles</span>
+                            <span class="garment-feature">Cuff Options</span>
+                            <span class="garment-feature">Monogramming</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="garment-card">
+                    <div class="garment-visual">
+                        <i class="fas fa-shoe-prints"></i>
+                    </div>
+                    <div class="garment-info">
+                        <h4>Trousers</h4>
+                        <p>Tailored pants with proper fit through waist, seat, and leg, finished with hand-sewn hems and pockets.</p>
+                        <div class="garment-features">
+                            <span class="garment-feature">Custom Fit</span>
+                            <span class="garment-feature">Hand Hemming</span>
+                            <span class="garment-feature">Pocket Detail</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="garment-card">
+                    <div class="garment-visual">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <div class="garment-info">
+                        <h4>Overcoats</h4>
+                        <p>Structured outerwear with proper balance and drape, featuring quality lining and hand-finished details.</p>
+                        <div class="garment-features">
+                            <span class="garment-feature">Full Canvas</span>
+                            <span class="garment-feature">Luxury Lining</span>
+                            <span class="garment-feature">Hand Details</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="garment-card">
+                    <div class="garment-visual">
+                        <i class="fas fa-female"></i>
+                    </div>
+                    <div class="garment-info">
+                        <h4>Women's Tailoring</h4>
+                        <p>Bespoke jackets, pants, and skirts with feminine silhouettes and precise fit considerations.</p>
+                        <div class="garment-features">
+                            <span class="garment-feature">Feminine Cut</span>
+                            <span class="garment-feature">Custom Fit</span>
+                            <span class="garment-feature">Style Options</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="garment-card">
+                    <div class="garment-visual">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <div class="garment-info">
+                        <h4>Alterations</h4>
+                        <p>Expert modifications to existing garments for improved fit, repair, or style updates with invisible workmanship.</p>
+                        <div class="garment-features">
+                            <span class="garment-feature">Fit Adjustment</span>
+                            <span class="garment-feature">Repairs</span>
+                            <span class="garment-feature">Restyling</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Design Studio -->
+    <section style="padding: 40px 20px; text-align: center; background: white;">
+        <a href="index.html#design" class="btn btn-primary">
+            <i class="fas fa-arrow-left"></i> Back to Design Studio
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Fashionista</h3>
+                    <p>Celebrating the artistry and innovation of fashion design worldwide.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Design Tools</h4>
+                    <ul>
+                        <li><a href="color-theory.html">Color Theory</a></li>
+                        <li><a href="textile-design.html">Textile Design</a></li>
+                        <li><a href="digital-fashion.html">Digital Fashion</a></li>
+                        <li><a href="pattern-making.html">Pattern Making</a></li>
+                        <li><a href="3d-modeling.html">3D Modeling</a></li>
+                        <li><a href="tailoring.html">Tailoring</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Collections</h4>
+                    <ul>
+                        <li><a href="avant-garde-couture.html">Avant-Garde Couture</a></li>
+                        <li><a href="sustainable-fashion.html">Sustainable Fashion</a></li>
+                        <li><a href="street-style-evolution.html">Street Style Evolution</a></li>
+                        <li><a href="heritage-revival.html">Heritage Revival</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Fashionista. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

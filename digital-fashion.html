@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Fashion - Fashion Design Studio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Digital Fashion Specific Styles */
+        .digital-hero {
+            min-height: 70vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .digital-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="digitalPattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="1" height="20" fill="rgba(255,255,255,0.1)"/><rect y="0" width="20" height="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23digitalPattern)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .digital-hero-content {
+            text-align: center;
+            color: white;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .digital-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .digital-hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        .tools-section {
+            padding: 80px 20px;
+        }
+        
+        .tools-category {
+            margin-bottom: 5rem;
+        }
+        
+        .category-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .category-header h3 {
+            font-size: 2.5rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        
+        .category-description {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #666;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .tool-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            border-color: #667eea;
+        }
+        
+        .tool-header {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tool-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        
+        .tool-content {
+            padding: 2rem;
+        }
+        
+        .tool-content h4 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .tool-badge {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .tool-content p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .tool-features {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+        
+        .tool-features h5 {
+            color: #667eea;
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 0.5rem;
+        }
+        
+        .feature-item {
+            background: white;
+            padding: 0.5rem;
+            border-radius: 5px;
+            text-align: center;
+            color: #666;
+            font-size: 0.8rem;
+            border: 1px solid #e9ecef;
+        }
+        
+        .price-tier {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        .price-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .price-value {
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .design-software {
+            background: white;
+        }
+        
+        .modeling-tools {
+            background: #f8f9fa;
+        }
+        
+        .rendering-engines {
+            background: white;
+        }
+        
+        .simulation-tech {
+            background: #f8f9fa;
+        }
+        
+        .workflow-section {
+            padding: 80px 20px;
+            background: white;
+        }
+        
+        .workflow-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .workflow-step {
+            text-align: center;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 15px;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        
+        .workflow-step:hover {
+            transform: translateY(-5px);
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .workflow-icon {
+            width: 80px;
+            height: 80px;
+            margin: 1rem auto 1.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+        }
+        
+        .workflow-step h4 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        
+        .workflow-step p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .techniques-showcase {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+        
+        .techniques-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .technique-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .technique-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .technique-visual {
+            height: 150px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+        }
+        
+        .technique-info {
+            padding: 1.5rem;
+        }
+        
+        .technique-info h4 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+        
+        .technique-info p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .technique-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .technique-tag {
+            background: #e9ecef;
+            color: #667eea;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .future-tech {
+            padding: 80px 20px;
+            background: white;
+        }
+        
+        .future-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .future-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .future-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: futureSpin 4s linear infinite;
+        }
+        
+        @keyframes futureSpin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .future-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            z-index: 2;
+            position: relative;
+        }
+        
+        .future-card h4 {
+            margin-bottom: 1rem;
+            z-index: 2;
+            position: relative;
+        }
+        
+        .future-card p {
+            line-height: 1.6;
+            z-index: 2;
+            position: relative;
+        }
+        
+        .resources-section {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+        
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .resource-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .resource-card:hover {
+            border-color: #667eea;
+            transform: translateY(-5px);
+        }
+        
+        .resource-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .resource-card h4 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        
+        .resource-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .digital-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .tools-grid,
+            .workflow-steps,
+            .techniques-grid,
+            .future-grid,
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tool-header {
+                height: 150px;
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2><a href="index.html" style="text-decoration: none; color: #667eea;">Fashionista</a></h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#collections" class="nav-link">Collections</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#design" class="nav-link">Design</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#trends" class="nav-link">Trends</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Digital Fashion Hero -->
+    <section class="digital-hero">
+        <div class="digital-hero-content">
+            <h1>Digital Fashion Design</h1>
+            <p>Revolutionizing fashion creation through cutting-edge digital tools, 3D modeling, and virtual reality technologies</p>
+        </div>
+    </section>
+
+    <!-- Design Software Section -->
+    <section class="tools-section design-software">
+        <div class="container">
+            <div class="tools-category">
+                <div class="category-header">
+                    <h3>Design Software</h3>
+                    <p class="category-description">
+                        Professional software solutions for fashion design, pattern making, and creative visualization. 
+                        These industry-standard tools enable designers to bring their visions to life with precision and efficiency.
+                    </p>
+                </div>
+                <div class="tools-grid">
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fab fa-adobe"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Adobe Creative Suite <span class="tool-badge">Professional</span></h4>
+                            <p>Industry-standard creative software including Illustrator for vector designs, Photoshop for digital illustration, and InDesign for layout and presentation.</p>
+                            <div class="tool-features">
+                                <h5>Key Features</h5>
+                                <div class="feature-list">
+                                    <div class="feature-item">Vector Design</div>
+                                    <div class="feature-item">Photo Editing</div>
+                                    <div class="feature-item">Layout Design</div>
+                                    <div class="feature-item">Color Management</div>
+                                </div>
+                            </div>
+                            <div class="price-tier">
+                                <span class="price-label">Subscription</span>
+                                <span class="price-value">$52.99/month</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-pencil-ruler"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>CLO 3D <span class="tool-badge">Industry Leader</span></h4>
+                            <p>Leading 3D fashion design software for creating, simulating, and visualizing garments in virtual environments with realistic fabric behavior.</p>
+                            <div class="tool-features">
+                                <h5>Capabilities</h5>
+                                <div class="feature-list">
+                                    <div class="feature-item">3D Simulation</div>
+                                    <div class="feature-item">Pattern Making</div>
+                                    <div class="feature-item">Fabric Physics</div>
+                                    <div class="feature-item">Fit Analysis</div>
+                                </div>
+                            </div>
+                            <div class="price-tier">
+                                <span class="price-label">Professional</span>
+                                <span class="price-value">$50/month</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-drafting-compass"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Optitex <span class="tool-badge">Enterprise</span></h4>
+                            <p>Comprehensive fashion design suite offering 2D pattern design, 3D virtual prototyping, and automated marker making for production efficiency.</p>
+                            <div class="tool-features">
+                                <h5>Modules</h5>
+                                <div class="feature-list">
+                                    <div class="feature-item">Pattern Design</div>
+                                    <div class="feature-item">3D Prototyping</div>
+                                    <div class="feature-item">Marker Making</div>
+                                    <div class="feature-item">Production Planning</div>
+                                </div>
+                            </div>
+                            <div class="price-tier">
+                                <span class="price-label">Enterprise</span>
+                                <span class="price-value">Contact Sales</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Lectra Kaledo <span class="tool-badge">Professional</span></h4>
+                            <p>Integrated design platform for fashion and textile creation, offering color reduction, pattern design, and trend forecasting tools.</p>
+                            <div class="tool-features">
+                                <h5>Tools</h5>
+                                <div class="feature-list">
+                                    <div class="feature-item">Color Tools</div>
+                                    <div class="feature-item">Print Design</div>
+                                    <div class="feature-item">Weave Design</div>
+                                    <div class="feature-item">Trend Analysis</div>
+                                </div>
+                            </div>
+                            <div class="price-tier">
+                                <span class="price-label">Professional</span>
+                                <span class="price-value">$200/month</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Procreate <span class="tool-badge">Creative</span></h4>
+                            <p>Digital illustration app perfect for fashion sketching, concept development, and creative exploration with intuitive touch controls.</p>
+                            <div class="tool-features">
+                                <h5>Features</h5>
+                                <div class="feature-list">
+                                    <div class="feature-item">Digital Sketching</div>
+                                    <div class="feature-item">Brush Variety</div>
+                                    <div class="feature-item">Layer Support</div>
+                                    <div class="feature-item">Time-lapse Recording</div>
+                                </div>
+                            </div>
+                            <div class="price-tier">
+                                <span class="price-label">One-time</span>
+                                <span class="price-value">$12.99</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-cube"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Blender <span class="tool-badge">Open Source</span></h4>
+                            <p>Free 3D creation suite with powerful modeling, animation, and rendering capabilities, increasingly popular for fashion visualization.</p>
+                            <div class="tool-features">
+                                <h5>Capabilities</h5>
+                                <div class="feature-list">
+                                    <div class="feature-item">3D Modeling</div>
+                                    <div class="feature-item">Animation</div>
+                                    <div class="feature-item">Rendering</div>
+                                    <div class="feature-item">Simulation</div>
+                                </div>
+                            </div>
+                            <div class="price-tier">
+                                <span class="price-label">Open Source</span>
+                                <span class="price-value">Free</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3D Modeling Tools Section -->
+    <section class="tools-section modeling-tools">
+        <div class="container">
+            <div class="tools-category">
+                <div class="category-header">
+                    <h3>3D Modeling Tools</h3>
+                    <p class="category-description">
+                        Advanced 3D modeling solutions specifically designed for fashion design, enabling realistic garment simulation, 
+                        virtual fitting, and photorealistic rendering for design validation and marketing.
+                    </p>
+                </div>
+                <div class="tools-grid">
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Virtual Avatars <span class="tool-badge">Essential</span></h4>
+                            <p>Customizable 3D avatars with accurate body measurements for virtual fitting and garment testing across diverse body types.</p>
+                            <div class="tool-features">
+                                <h5>Features</h5>
+                                <div class="feature-list">
+                                    <div class="feature-item">Body Scanning</div>
+                                    <div class="feature-item">Size Grading</div>
+                                    <div class="feature-item">Pose Variation</div>
+                                    <div class="feature-item">Diversity Options</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Garment Simulation <span class="tool-badge">Advanced</span></h4>
+                            <p>Realistic physics-based garment simulation showing how fabrics drape, fold, and move with accurate material properties.</p>
+                            <div class="tool-features">
+                                <h5>Physics</h5>
+                                <div class="feature-list">
+                                    <div class="feature-item">Fabric Drape</div>
+                                    <div class="feature-item">Stretch Behavior</div>
+                                    <div class="feature-item">Wind Effects</div>
+                                    <div class="feature-item">Collision Detection</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-magic"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Material Libraries <span class="tool-badge">Comprehensive</span></h4>
+                            <p>Extensive libraries of digital fabrics with realistic properties including cotton, silk, wool, synthetic materials, and innovative textiles.</p>
+                            <div class="tool-features">
+                                <h5>Materials</h5>
+                                <div class="feature-list">
+                                    <div class="feature-item">Natural Fibers</div>
+                                    <div class="feature-item">Synthetic Fabrics</div>
+                                    <div class="feature-item">Technical Textiles</div>
+                                    <div class="feature-item">Custom Properties</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-adjust"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Fit Analysis <span class="tool-badge">Professional</span></h4>
+                            <p>Advanced tools for analyzing garment fit, identifying pressure points, and optimizing comfort through detailed stress mapping.</p>
+                            <div class="tool-features">
+                                <h5>Analysis</h5>
+                                <div class="feature-list">
+                                    <div class="feature-item">Pressure Mapping</div>
+                                    <div class="feature-item">Strain Analysis</div>
+                                    <div class="feature-item">Movement Study</div>
+                                    <div class="feature-item">Comfort Assessment</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-vr-cardboard"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>VR Integration <span class="tool-badge">Innovative</span></h4>
+                            <p>Virtual reality compatibility for immersive design reviews, virtual showrooms, and collaborative design sessions.</p>
+                            <div class="tool-features">
+                                <h5>VR Features</h5>
+                                <div class="feature-list">
+                                    <div class="feature-item">Immersive Design</div>
+                                    <div class="feature-item">Virtual Showroom</div>
+                                    <div class="feature-item">Collaborative Review</div>
+                                    <div class="feature-item">Real-time Editing</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-card">
+                        <div class="tool-header">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="tool-content">
+                            <h4>Photorealistic Rendering <span class="tool-badge">Studio Quality</span></h4>
+                            <p>High-quality rendering engines producing studio-quality images for marketing, catalogs, and client presentations.</p>
+                            <div class="tool-features">
+                                <h5>Rendering</h5>
+                                <div class="feature-list">
+                                    <div class="feature-item">Ray Tracing</div>
+                                    <div class="feature-item">Global Illumination</div>
+                                    <div class="feature-item">HDR Lighting</div>
+                                    <div class="feature-item">Post Processing</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Digital Design Workflow -->
+    <section class="workflow-section">
+        <div class="container">
+            <h2 class="section-title">Digital Design Workflow</h2>
+            <div class="workflow-steps">
+                <div class="workflow-step">
+                    <div class="step-number">1</div>
+                    <div class="workflow-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h4>Concept Development</h4>
+                    <p>Initial sketching and mood board creation using digital illustration tools to establish design direction and aesthetic vision.</p>
+                </div>
+
+                <div class="workflow-step">
+                    <div class="step-number">2</div>
+                    <div class="workflow-icon">
+                        <i class="fas fa-drafting-compass"></i>
+                    </div>
+                    <h4>Pattern Creation</h4>
+                    <p>Digital pattern making with precise measurements, grading across sizes, and technical flat drawings for production reference.</p>
+                </div>
+
+                <div class="workflow-step">
+                    <div class="step-number">3</div>
+                    <div class="workflow-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h4>3D Visualization</h4>
+                    <p>Creating virtual 3D garments with realistic fabric simulation to visualize fit, drape, and overall design before physical production.</p>
+                </div>
+
+                <div class="workflow-step">
+                    <div class="step-number">4</div>
+                    <div class="workflow-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h4>Virtual Fitting</h4>
+                    <p>Testing garments on various avatar body types to optimize fit, identify issues, and refine designs for different demographics.</p>
+                </div>
+
+                <div class="workflow-step">
+                    <div class="step-number">5</div>
+                    <div class="workflow-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h4>Marketing Renders</h4>
+                    <p>Producing high-quality photorealistic renders for catalogs, e-commerce, and marketing materials without physical photoshoots.</p>
+                </div>
+
+                <div class="workflow-step">
+                    <div class="step-number">6</div>
+                    <div class="workflow-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h4>Production Files</h4>
+                    <p>Generating technical packages, size specifications, and production-ready files for efficient manufacturing processes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advanced Techniques -->
+    <section class="techniques-showcase">
+        <div class="container">
+            <h2 class="section-title">Advanced Digital Techniques</h2>
+            <div class="techniques-grid">
+                <div class="technique-card">
+                    <div class="technique-visual">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="technique-info">
+                        <h4>AI-Powered Design</h4>
+                        <p>Machine learning algorithms that generate design variations, predict trends, and automate repetitive design tasks.</p>
+                        <div class="technique-tags">
+                            <span class="technique-tag">Automation</span>
+                            <span class="technique-tag">Trend Prediction</span>
+                            <span class="technique-tag">Efficiency</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="technique-card">
+                    <div class="technique-visual">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="technique-info">
+                        <h4>AR Try-On</h4>
+                        <p>Augmented reality technology allowing customers to virtually try on garments using smartphone cameras.</p>
+                        <div class="technique-tags">
+                            <span class="technique-tag">Customer Experience</span>
+                            <span class="technique-tag">Retail Innovation</span>
+                            <span class="technique-tag">Accessibility</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="technique-card">
+                    <div class="technique-visual">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <div class="technique-info">
+                        <h4>Parametric Design</h4>
+                        <p>Algorithm-based design creation allowing for systematic variations and customization through parameter adjustment.</p>
+                        <div class="technique-tags">
+                            <span class="technique-tag">Customization</span>
+                            <span class="technique-tag">Systematic Design</span>
+                            <span class="technique-tag">Efficiency</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="technique-card">
+                    <div class="technique-visual">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <div class="technique-info">
+                        <h4>Cloud Collaboration</h4>
+                        <p>Real-time collaborative design platforms enabling global teams to work together on fashion projects simultaneously.</p>
+                        <div class="technique-tags">
+                            <span class="technique-tag">Teamwork</span>
+                            <span class="technique-tag">Global Access</span>
+                            <span class="technique-tag">Real-time</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="technique-card">
+                    <div class="technique-visual">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="technique-info">
+                        <h4>Data-Driven Design</h4>
+                        <p>Using customer data, sales analytics, and market research to inform design decisions and predict successful products.</p>
+                        <div class="technique-tags">
+                            <span class="technique-tag">Analytics</span>
+                            <span class="technique-tag">Market Research</span>
+                            <span class="technique-tag">Success Prediction</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="technique-card">
+                    <div class="technique-visual">
+                        <i class="fas fa-print"></i>
+                    </div>
+                    <div class="technique-info">
+                        <h4>Digital Printing</h4>
+                        <p>Direct-to-garment and digital textile printing enabling unlimited colors, complex patterns, and on-demand production.</p>
+                        <div class="technique-tags">
+                            <span class="technique-tag">Unlimited Colors</span>
+                            <span class="technique-tag">On-Demand</span>
+                            <span class="technique-tag">Customization</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Future Technologies -->
+    <section class="future-tech">
+        <div class="container">
+            <h2 class="section-title" style="color: #f093fb;">Future of Digital Fashion</h2>
+            <div class="future-grid">
+                <div class="future-card">
+                    <div class="future-icon">
+                        <i class="fas fa-atom"></i>
+                    </div>
+                    <h4>Quantum Computing</h4>
+                    <p>Revolutionary computing power enabling complex material simulations and advanced AI applications for fashion design optimization.</p>
+                </div>
+
+                <div class="future-card">
+                    <div class="future-icon">
+                        <i class="fas fa-dna"></i>
+                    </div>
+                    <h4>Bio-Digital Materials</h4>
+                    <p>Integration of biological systems with digital design, creating living materials that adapt and respond to environmental conditions.</p>
+                </div>
+
+                <div class="future-card">
+                    <div class="future-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h4>Metaverse Fashion</h4>
+                    <p>Virtual fashion ecosystems where digital garments exist in virtual worlds, opening new markets and creative possibilities.</p>
+                </div>
+
+                <div class="future-card">
+                    <div class="future-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h4>Neural Interfaces</h4>
+                    <p>Direct brain-computer interfaces enabling designers to create and manipulate designs through thought, revolutionizing the creative process.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Resources -->
+    <section class="resources-section">
+        <div class="container">
+            <h2 class="section-title">Learning Resources</h2>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h4>Online Courses</h4>
+                    <p>Comprehensive courses covering digital fashion design, 3D modeling, and advanced software techniques from industry experts.</p>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-youtube"></i>
+                    </div>
+                    <h4>Video Tutorials</h4>
+                    <p>Step-by-step video guides for mastering digital fashion tools, techniques, and workflows from beginner to advanced levels.</p>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4>Communities</h4>
+                    <p>Active online communities of digital fashion designers sharing knowledge, feedback, and collaboration opportunities.</p>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h4>Documentation</h4>
+                    <p>Comprehensive documentation, user guides, and best practices for all major digital fashion design software and tools.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Design Studio -->
+    <section style="padding: 40px 20px; text-align: center; background: white;">
+        <a href="index.html#design" class="btn btn-primary">
+            <i class="fas fa-arrow-left"></i> Back to Design Studio
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Fashionista</h3>
+                    <p>Celebrating the artistry and innovation of fashion design worldwide.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Design Tools</h4>
+                    <ul>
+                        <li><a href="color-theory.html">Color Theory</a></li>
+                        <li><a href="textile-design.html">Textile Design</a></li>
+                        <li><a href="digital-fashion.html">Digital Fashion</a></li>
+                        <li><a href="#">Pattern Making</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Collections</h4>
+                    <ul>
+                        <li><a href="avant-garde-couture.html">Avant-Garde Couture</a></li>
+                        <li><a href="sustainable-fashion.html">Sustainable Fashion</a></li>
+                        <li><a href="street-style-evolution.html">Street Style Evolution</a></li>
+                        <li><a href="heritage-revival.html">Heritage Revival</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Fashionista. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

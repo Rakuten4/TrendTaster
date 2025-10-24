@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heritage Revival Collection - Fashionista</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Additional styles for collection page */
+        .collection-hero {
+            min-height: 80vh;
+            background-image: url('images/Cultural-Heritage.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .collection-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(139, 69, 19, 0.6);
+            z-index: 1;
+        }
+        
+        .collection-hero-content {
+            text-align: center;
+            color: white;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .collection-hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(45deg, #d4af37, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .collection-hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        .collection-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #d4af37;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .heritage-principles {
+            padding: 80px 20px;
+            background: white;
+        }
+        
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .principle-card {
+            background: #faf8f3;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 2px solid #d4af37;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
+        }
+        
+        .principle-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .principle-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #d4af37, #ffd700);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+        
+        .principle-card h3 {
+            margin-bottom: 1rem;
+            color: #8b4513;
+        }
+        
+        .principle-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .collection-gallery {
+            padding: 80px 20px;
+            background: #f8f6f0;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .gallery-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            border: 1px solid #e8e2d5;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .gallery-image {
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .heritage-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #d4af37;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .gallery-info {
+            padding: 1.5rem;
+        }
+        
+        .gallery-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #8b4513;
+        }
+        
+        .gallery-info p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .heritage-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .heritage-tag {
+            background: #f4f0e6;
+            color: #8b4513;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .artisan-name {
+            color: #d4af37;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        .cultural-timeline {
+            padding: 80px 20px;
+            background: white;
+        }
+        
+        .timeline-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #d4af37, #8b4513);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .timeline-content {
+            flex: 1;
+            padding: 2rem;
+            background: #faf8f3;
+            border-radius: 15px;
+            margin: 0 3rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e8e2d5;
+        }
+        
+        .timeline-era {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #d4af37;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 50px;
+            font-weight: bold;
+            z-index: 2;
+            white-space: nowrap;
+        }
+        
+        .timeline-content h3 {
+            color: #8b4513;
+            margin-bottom: 1rem;
+        }
+        
+        .timeline-content p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .master-artisans {
+            padding: 80px 20px;
+            background: #f8f6f0;
+        }
+        
+        .artisans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .artisan-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            border: 1px solid #e8e2d5;
+        }
+        
+        .artisan-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .artisan-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #d4af37, #ffd700);
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        
+        .artisan-card h3 {
+            margin-bottom: 0.5rem;
+            color: #8b4513;
+        }
+        
+        .artisan-specialty {
+            color: #d4af37;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+        
+        .artisan-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .experience-years {
+            background: #f4f0e6;
+            color: #8b4513;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .global-heritage {
+            padding: 80px 20px;
+            background: white;
+        }
+        
+        .regions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .region-card {
+            background: #faf8f3;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            border: 1px solid #e8e2d5;
+        }
+        
+        .region-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .region-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .region-name {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            background: rgba(139, 69, 19, 0.9);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 15px;
+            font-weight: 500;
+        }
+        
+        .region-info {
+            padding: 1.5rem;
+        }
+        
+        .region-info h3 {
+            margin-bottom: 1rem;
+            color: #8b4513;
+        }
+        
+        .region-info p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .signature-crafts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .craft-tag {
+            background: #d4af37;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .preservation-efforts {
+            padding: 80px 20px;
+            background: #f8f6f0;
+        }
+        
+        .preservation-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .preservation-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .preservation-stat {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e8e2d5;
+        }
+        
+        .preservation-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #d4af37;
+            margin-bottom: 0.5rem;
+        }
+        
+        .preservation-label {
+            font-size: 1rem;
+            color: #8b4513;
+            font-weight: 500;
+        }
+        
+        .preservation-description {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .collection-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .collection-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .timeline-line {
+                left: 30px;
+            }
+            
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                flex-direction: row;
+            }
+            
+            .timeline-content {
+                margin-left: 60px;
+                margin-right: 0;
+            }
+            
+            .timeline-era {
+                left: 30px;
+            }
+            
+            .gallery-grid,
+            .principles-grid,
+            .artisans-grid,
+            .regions-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .preservation-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2><a href="index.html" style="text-decoration: none; color: #667eea;">Fashionista</a></h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#collections" class="nav-link">Collections</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#design" class="nav-link">Design</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#trends" class="nav-link">Trends</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Collection Hero -->
+    <section class="collection-hero">
+        <div class="collection-hero-content">
+            <h1>Heritage Revival</h1>
+            <p>Traditional craftsmanship meets modern design sensibilities, preserving cultural heritage for future generations</p>
+            <div class="collection-stats">
+                <div class="stat">
+                    <div class="stat-number">25</div>
+                    <div class="stat-label">Cultural Traditions</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">150+</div>
+                    <div class="stat-label">Master Artisans</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">500</div>
+                    <div class="stat-label">Years of Heritage</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Heritage Principles -->
+    <section class="heritage-principles">
+        <div class="container">
+            <h2 class="section-title">Heritage Principles</h2>
+            <div class="principles-grid">
+                <div class="principle-card">
+                    <div class="principle-icon">
+                        <i class="fas fa-hands"></i>
+                    </div>
+                    <h3>Traditional Craftsmanship</h3>
+                    <p>Preserving time-honored techniques passed down through generations of skilled artisans and craftspeople.</p>
+                </div>
+                
+                <div class="principle-card">
+                    <div class="principle-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Cultural Preservation</h3>
+                    <p>Maintaining and celebrating the cultural significance of traditional garments and textile practices.</p>
+                </div>
+                
+                <div class="principle-card">
+                    <div class="principle-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>Modern Adaptation</h3>
+                    <p>Thoughtfully adapting traditional designs for contemporary wear while respecting their origins.</p>
+                </div>
+                
+                <div class="principle-card">
+                    <div class="principle-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Global Appreciation</h3>
+                    <p>Fostering cross-cultural understanding and appreciation through fashion heritage education.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collection Gallery -->
+    <section class="collection-gallery">
+        <div class="container">
+            <h2 class="section-title">Heritage Pieces</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="gallery-image" style="background: linear-gradient(45deg, #8b4513, #a0522d);">
+                        <div class="heritage-badge">Indian Tradition</div>
+                    </div>
+                    <div class="gallery-info">
+                        <h3>Handwoven Silk Saree</h3>
+                        <p>Exquisite Banarasi silk saree featuring traditional zari work and intricate patterns passed down through centuries.</p>
+                        <div class="heritage-tags">
+                            <span class="heritage-tag">Handwoven</span>
+                            <span class="heritage-tag">Zari Work</span>
+                            <span class="heritage-tag">Silk</span>
+                        </div>
+                        <div class="artisan-name">Master Weaver Rajesh Kumar</div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <div class="gallery-image" style="background: linear-gradient(45deg, #d4af37, #ffd700);">
+                        <div class="heritage-badge">Japanese Craft</div>
+                    </div>
+                    <div class="gallery-info">
+                        <h3>Indigo-Dyed Kimono</h3>
+                        <p>Traditional Japanese kimono featuring natural indigo dyeing techniques and hand-painted motifs celebrating nature.</p>
+                        <div class="heritage-tags">
+                            <span class="heritage-tag">Indigo Dye</span>
+                            <span class="heritage-tag">Hand-painted</span>
+                            <span class="heritage-tag">Silk</span>
+                        </div>
+                        <div class="artisan-name">Artisan Yuki Tanaka</div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <div class="gallery-image" style="background: linear-gradient(45deg, #8fbc8f, #90ee90);">
+                        <div class="heritage-badge">African Heritage</div>
+                    </div>
+                    <div class="gallery-info">
+                        <h3>Kente Cloth Ensemble</h3>
+                        <p>Authentic Ghanaian kente cloth woven with traditional patterns, each stripe carrying cultural significance and meaning.</p>
+                        <div class="heritage-tags">
+                            <span class="heritage-tag">Kente</span>
+                            <span class="heritage-tag">Traditional Patterns</span>
+                            <span class="heritage-tag">Cotton</span>
+                        </div>
+                        <div class="artisan-name">Master Weaver Kwame Asante</div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <div class="gallery-image" style="background: linear-gradient(45deg, #cd853f, #daa520);">
+                        <div class="heritage-badge">Peruvian Tradition</div>
+                    </div>
+                    <div class="gallery-info">
+                        <h3>Alpaca Wool Poncho</h3>
+                        <p>Traditional Andean poncho crafted from premium alpaca wool using ancient techniques and natural dye processes.</p>
+                        <div class="heritage-tags">
+                            <span class="heritage-tag">Alpaca Wool</span>
+                            <span class="heritage-tag">Natural Dyes</span>
+                            <span class="heritage-tag">Andean</span>
+                        </div>
+                        <div class="artisan-name">Artisan Maria Quispe</div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <div class="gallery-image" style="background: linear-gradient(45deg, #4682b4, #87ceeb);">
+                        <div class="heritage-badge">Scottish Heritage</div>
+                    </div>
+                    <div class="gallery-info">
+                        <h3>Harris Tweed Jacket</h3>
+                        <p>Authentic Harris Tweed hand-woven in the Outer Hebrides, showcasing centuries-old Scottish textile traditions.</p>
+                        <div class="heritage-tags">
+                            <span class="heritage-tag">Harris Tweed</span>
+                            <span class="heritage-tag">Hand-woven</span>
+                            <span class="heritage-tag">Wool</span>
+                        </div>
+                        <div class="artisan-name">Weaver Donald MacLeod</div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <div class="gallery-image" style="background: linear-gradient(45deg, #dc143c, #ff6347);">
+                        <div class="heritage-badge">Mexican Culture</div>
+                    </div>
+                    <div class="gallery-info">
+                        <h3>Oaxacan Embroidered Blouse</h3>
+                        <p>Vibrant Mexican blouse featuring traditional Zapotec embroidery with floral motifs and cultural symbolism.</p>
+                        <div class="heritage-tags">
+                            <span class="heritage-tag">Hand Embroidery</span>
+                            <span class="heritage-tag">Zapotec</span>
+                            <span class="heritage-tag">Cotton</span>
+                        </div>
+                        <div class="artisan-name">Embroiderer Esperanza Morales</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cultural Timeline -->
+    <section class="cultural-timeline">
+        <div class="container">
+            <h2 class="section-title">Cultural Heritage Timeline</h2>
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-era">Ancient Times</div>
+                    <div class="timeline-content">
+                        <h3>Foundation of Textile Arts</h3>
+                        <p>Early civilizations develop fundamental weaving, dyeing, and embroidery techniques that form the basis of cultural textile traditions worldwide.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-era">Medieval Period</div>
+                    <div class="timeline-content">
+                        <h3>Guild System Development</h3>
+                        <p>Artisan guilds establish formal training systems, ensuring quality craftsmanship and preservation of traditional techniques across generations.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-era">Renaissance</div>
+                    <div class="timeline-content">
+                        <h3>Artistic Innovation</h3>
+                        <p>Cultural exchange and artistic renaissance lead to fusion of techniques, creating unique regional styles and sophisticated decorative methods.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-era">Industrial Era</div>
+                    <div class="timeline-content">
+                        <h3>Tradition vs. Mechanization</h3>
+                        <p>Traditional crafts face challenges from industrial production, leading to movements to preserve and document heritage techniques.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-era">Modern Revival</div>
+                    <div class="timeline-content">
+                        <h3>Cultural Appreciation</h3>
+                        <p>Growing appreciation for handmade crafts and cultural authenticity drives revival of traditional techniques in contemporary fashion.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-era">Digital Age</div>
+                    <div class="timeline-content">
+                        <h3>Global Accessibility</h3>
+                        <p>Digital platforms enable global sharing of traditional techniques, fostering cross-cultural collaboration and heritage preservation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Master Artisans -->
+    <section class="master-artisans">
+        <div class="container">
+            <h2 class="section-title">Master Artisans</h2>
+            <div class="artisans-grid">
+                <div class="artisan-card">
+                    <div class="artisan-avatar">RK</div>
+                    <h3>Rajesh Kumar</h3>
+                    <div class="artisan-specialty">Master Silk Weaver</div>
+                    <p>Third-generation Banarasi weaver specializing in traditional zari work and intricate brocade patterns.</p>
+                    <div class="experience-years">35+ Years Experience</div>
+                </div>
+                
+                <div class="artisan-card">
+                    <div class="artisan-avatar">YT</div>
+                    <h3>Yuki Tanaka</h3>
+                    <div class="artisan-specialty">Indigo Dye Master</div>
+                    <p>Japanese artisan preserving traditional aizome indigo dyeing techniques and natural fermentation processes.</p>
+                    <div class="experience-years">28+ Years Experience</div>
+                </div>
+                
+                <div class="artisan-card">
+                    <div class="artisan-avatar">KA</div>
+                    <h3>Kwame Asante</h3>
+                    <div class="artisan-specialty">Kente Weaving Master</div>
+                    <p>Ghanaian master weaver creating authentic kente cloth with traditional patterns and cultural significance.</p>
+                    <div class="experience-years">42+ Years Experience</div>
+                </div>
+                
+                <div class="artisan-card">
+                    <div class="artisan-avatar">MQ</div>
+                    <h3>Maria Quispe</h3>
+                    <div class="artisan-specialty">Andean Textile Artist</div>
+                    <p>Peruvian artisan specializing in traditional Andean weaving techniques and natural alpaca fiber processing.</p>
+                    <div class="experience-years">30+ Years Experience</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Global Heritage Regions -->
+    <section class="global-heritage">
+        <div class="container">
+            <h2 class="section-title">Global Heritage Regions</h2>
+            <div class="regions-grid">
+                <div class="region-card">
+                    <div class="region-image" style="background: linear-gradient(45deg, #ff6347, #ffa500);">
+                        <div class="region-name">South Asia</div>
+                    </div>
+                    <div class="region-info">
+                        <h3>Indian Subcontinent</h3>
+                        <p>Rich tradition of handloom weaving, intricate embroidery, and natural dyeing techniques spanning thousands of years.</p>
+                        <div class="signature-crafts">
+                            <span class="craft-tag">Handloom</span>
+                            <span class="craft-tag">Embroidery</span>
+                            <span class="craft-tag">Block Printing</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="region-card">
+                    <div class="region-image" style="background: linear-gradient(45deg, #4169e1, #87cefa);">
+                        <div class="region-name">East Asia</div>
+                    </div>
+                    <div class="region-info">
+                        <h3>Japan & China</h3>
+                        <p>Sophisticated silk weaving, natural indigo dyeing, and intricate embroidery reflecting centuries of artistic refinement.</p>
+                        <div class="signature-crafts">
+                            <span class="craft-tag">Silk Weaving</span>
+                            <span class="craft-tag">Indigo Dyeing</span>
+                            <span class="craft-tag">Brocade</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="region-card">
+                    <div class="region-image" style="background: linear-gradient(45deg, #32cd32, #228b22);">
+                        <div class="region-name">West Africa</div>
+                    </div>
+                    <div class="region-info">
+                        <h3>Ghana & Nigeria</h3>
+                        <p>Vibrant textile traditions including kente weaving, adire dyeing, and symbolic pattern creation with cultural meaning.</p>
+                        <div class="signature-crafts">
+                            <span class="craft-tag">Kente</span>
+                            <span class="craft-tag">Adire</span>
+                            <span class="craft-tag">Mud Cloth</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="region-card">
+                    <div class="region-image" style="background: linear-gradient(45deg, #cd853f, #peru);">
+                        <div class="region-name">Andes</div>
+                    </div>
+                    <div class="region-info">
+                        <h3>Peru & Bolivia</h3>
+                        <p>Ancient textile traditions using alpaca and llama fibers with natural dyes and complex weaving patterns.</p>
+                        <div class="signature-crafts">
+                            <span class="craft-tag">Alpaca Weaving</span>
+                            <span class="craft-tag">Natural Dyes</span>
+                            <span class="craft-tag">Backstrap Loom</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Preservation Efforts -->
+    <section class="preservation-efforts">
+        <div class="preservation-content">
+            <h2 class="section-title">Preservation Impact</h2>
+            <p style="max-width: 600px; margin: 0 auto; color: #666; line-height: 1.6;">
+                Our heritage revival initiative actively supports traditional craftspeople and preserves endangered textile techniques for future generations.
+            </p>
+            
+            <div class="preservation-stats">
+                <div class="preservation-stat">
+                    <div class="preservation-number">150+</div>
+                    <div class="preservation-label">Artisans Supported</div>
+                    <div class="preservation-description">Providing fair wages and global market access</div>
+                </div>
+                
+                <div class="preservation-stat">
+                    <div class="preservation-number">25</div>
+                    <div class="preservation-label">Techniques Documented</div>
+                    <div class="preservation-description">Preserving knowledge through video and written records</div>
+                </div>
+                
+                <div class="preservation-stat">
+                    <div class="preservation-number">500+</div>
+                    <div class="preservation-label">Young Apprentices</div>
+                    <div class="preservation-description">Training next generation of traditional craftspeople</div>
+                </div>
+                
+                <div class="preservation-stat">
+                    <div class="preservation-number">12</div>
+                    <div class="preservation-label">Cultural Centers</div>
+                    <div class="preservation-description">Supporting local heritage preservation institutions</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Collections -->
+    <section style="padding: 40px 20px; text-align: center; background: white;">
+        <a href="index.html#collections" class="btn btn-primary">
+            <i class="fas fa-arrow-left"></i> Back to Collections
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Fashionista</h3>
+                    <p>Celebrating the artistry and innovation of fashion design worldwide.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#home">Home</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#collections">Collections</a></li>
+                        <li><a href="index.html#design">Design</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Collections</h4>
+                    <ul>
+                        <li><a href="avant-garde-couture.html">Avant-Garde Couture</a></li>
+                        <li><a href="sustainable-fashion.html">Sustainable Fashion</a></li>
+                        <li><a href="street-style-evolution.html">Street Style Evolution</a></li>
+                        <li><a href="heritage-revival.html">Heritage Revival</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Fashionista. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
