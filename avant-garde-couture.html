@@ -212,6 +212,53 @@
             line-height: 1.6;
         }
         
+        /* Lightbox Modal Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            cursor: pointer;
+        }
+        
+        .lightbox-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .lightbox-close:hover {
+            color: #667eea;
+        }
+        
+        .gallery-image {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-image:hover {
+            transform: scale(1.02);
+        }
+        
         @media (max-width: 768px) {
             .collection-hero h1 {
                 font-size: 2.5rem;
@@ -292,25 +339,25 @@
             <h2 class="section-title">Featured Pieces</h2>
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <div class="gallery-image" style="background: linear-gradient(45deg, #667eea, #764ba2);"></div>
+                    <div class="gallery-image" style="background-image: url('images/thats it.jpg'); background-size: cover; background-position: center top;"></div>
                     <div class="gallery-info">
                         <h3>Metamorphic Silhouette</h3>
                         <p>A revolutionary dress that transforms its shape through hidden mechanisms, challenging traditional notions of static fashion.</p>
-                        <div class="designer-name">By Aria Blackwood</div>
+                        <div class="designer-name">By Alessandro Michele</div>
                     </div>
                 </div>
                 
                 <div class="gallery-item">
-                    <div class="gallery-image" style="background: linear-gradient(45deg, #ff9a9e, #fecfef);"></div>
+                    <div class="gallery-image" style="background-image: url('images/weave coat.webp'); background-size: cover; background-position: center top;"></div>
                     <div class="gallery-info">
                         <h3>Digital Weave Coat</h3>
                         <p>Incorporating fiber optic threads and responsive materials that react to environmental stimuli and emotions.</p>
-                        <div class="designer-name">By Zara Chen</div>
+                        <div class="designer-name">By Emelle</div>
                     </div>
                 </div>
                 
                 <div class="gallery-item">
-                    <div class="gallery-image" style="background: linear-gradient(45deg, #a18cd1, #fbc2eb);"></div>
+                    <div class="gallery-image" style="background-image: url('images/ARCH.jpg'); background-size: cover; background-position: center;"></div>
                     <div class="gallery-info">
                         <h3>Architectural Armor</h3>
                         <p>Bold geometric structures that blend fashion with architectural principles, creating wearable art pieces.</p>
@@ -445,6 +492,57 @@
         </div>
     </footer>
 
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
     <script src="script.js"></script>
+    <script>
+        // Lightbox functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxClose = document.querySelector('.lightbox-close');
+            const galleryImages = document.querySelectorAll('.gallery-image');
+            
+            // Add click event to gallery images
+            galleryImages.forEach(function(image) {
+                image.addEventListener('click', function() {
+                    const bgImage = window.getComputedStyle(this).backgroundImage;
+                    const imageUrl = bgImage.slice(4, -1).replace(/"/g, "");
+                    
+                    if (imageUrl && imageUrl !== 'none') {
+                        lightboxImg.src = imageUrl;
+                        lightbox.style.display = 'block';
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            });
+            
+            // Close lightbox when clicking close button
+            lightboxClose.addEventListener('click', function() {
+                lightbox.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+            
+            // Close lightbox when clicking outside the image
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) {
+                    lightbox.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // Close lightbox with ESC key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && lightbox.style.display === 'block') {
+                    lightbox.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
