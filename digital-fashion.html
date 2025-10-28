@@ -469,6 +469,391 @@
             line-height: 1.6;
         }
         
+        /* Interactive Dress Designer Styles */
+        .dress-designer {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+        
+        .designer-workspace {
+            display: grid;
+            grid-template-columns: 250px 1fr 300px;
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .design-tools {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+        }
+        
+        .design-tools h3 {
+            margin-bottom: 1.5rem;
+            color: #2c2c2c;
+            font-size: 1.3rem;
+        }
+        
+        .tool-section {
+            margin-bottom: 2rem;
+        }
+        
+        .tool-section h4 {
+            margin-bottom: 1rem;
+            color: #666;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        
+        .template-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .template-btn {
+            padding: 0.5rem;
+            border: 2px solid #e0e0e0;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .template-btn.active,
+        .template-btn:hover {
+            border-color: #667eea;
+            background: #667eea;
+            color: white;
+        }
+        
+        .color-palette {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.5rem;
+        }
+        
+        .color-option {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .color-option.active {
+            border-color: #2c2c2c;
+            transform: scale(1.1);
+        }
+        
+        .brush-tools {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .brush-btn {
+            flex: 1;
+            padding: 0.5rem;
+            border: 2px solid #e0e0e0;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.8rem;
+        }
+        
+        .brush-btn.active,
+        .brush-btn:hover {
+            border-color: #667eea;
+            background: #667eea;
+            color: white;
+        }
+        
+        .brush-size {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .brush-size input {
+            flex: 1;
+        }
+        
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .action-btn {
+            padding: 0.8rem;
+            border: 2px solid #e0e0e0;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .action-btn:hover {
+            border-color: #667eea;
+            background: #667eea;
+            color: white;
+        }
+        
+        .canvas-area {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .canvas-area h3 {
+            margin-bottom: 1.5rem;
+            color: #2c2c2c;
+        }
+        
+        .canvas-container {
+            position: relative;
+            display: inline-block;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        #dressCanvas {
+            display: block;
+            cursor: crosshair;
+        }
+        
+        .canvas-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .dress-template {
+            width: 100%;
+            height: 100%;
+            opacity: 0.3;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        
+        .design-preview {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+        }
+        
+        .design-preview h3 {
+            margin-bottom: 1.5rem;
+            color: #2c2c2c;
+            font-size: 1.3rem;
+        }
+        
+        .preview-area {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .dress-preview {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .dress-silhouette {
+            width: 100px;
+            height: 150px;
+            background: #ddd;
+            border-radius: 20px 20px 60px 60px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        /* Different silhouette shapes */
+        .silhouette-a-line {
+            border-radius: 20px 20px 60px 60px;
+        }
+        
+        .silhouette-sheath {
+            border-radius: 15px 15px 15px 15px;
+            width: 80px;
+        }
+        
+        .silhouette-ball-gown {
+            border-radius: 20px 20px 80px 80px;
+            width: 120px;
+        }
+        
+        .silhouette-maxi {
+            height: 180px;
+            border-radius: 15px 15px 25px 25px;
+            width: 85px;
+        }
+        
+        .silhouette-sleeveless {
+            border-radius: 25px 25px 40px 40px;
+            width: 90px;
+            height: 130px;
+        }
+        
+        .silhouette-polo-dress {
+            border-radius: 15px 15px 35px 35px;
+            width: 85px;
+            height: 140px;
+        }
+        
+        .silhouette-t-shirt {
+            border-radius: 20px 20px 20px 20px;
+            width: 95px;
+            height: 100px;
+        }
+        
+        .silhouette-t-shirt::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: -15px;
+            width: 30px;
+            height: 40px;
+            background: inherit;
+            border-radius: 10px;
+        }
+        
+        .silhouette-t-shirt::after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            right: -15px;
+            width: 30px;
+            height: 40px;
+            background: inherit;
+            border-radius: 10px;
+        }
+        
+        .silhouette-skirt {
+            border-radius: 0 0 40px 40px;
+            width: 90px;
+            height: 80px;
+            margin-top: 70px;
+        }
+        
+        .silhouette-scarf {
+            border-radius: 50px;
+            width: 120px;
+            height: 30px;
+            margin-top: 60px;
+        }
+        
+        .silhouette-cap {
+            border-radius: 50px 50px 0 0;
+            width: 80px;
+            height: 40px;
+            margin-top: 55px;
+        }
+        
+        .silhouette-cap::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: -10px;
+            width: 40px;
+            height: 10px;
+            background: inherit;
+            border-radius: 20px;
+        }
+        
+        .silhouette-cocktail {
+            border-radius: 25px 25px 50px 50px;
+            width: 95px;
+            height: 120px;
+        }
+        
+        .silhouette-wrap-dress {
+            border-radius: 20px 20px 45px 45px;
+            width: 90px;
+            height: 145px;
+            transform: skew(-2deg);
+        }
+        
+        .color-analysis {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 10px;
+        }
+        
+        .color-analysis h4 {
+            margin-bottom: 0.5rem;
+            color: #666;
+            font-size: 1rem;
+        }
+        
+        .dominant-colors {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .color-dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .design-info {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 10px;
+        }
+        
+        .design-info h4 {
+            margin-bottom: 1rem;
+            color: #666;
+            font-size: 1rem;
+        }
+        
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .info-item .label {
+            color: #666;
+        }
+        
+        .info-item .value {
+            color: #2c2c2c;
+            font-weight: 500;
+        }
+        
         @media (max-width: 768px) {
             .digital-hero h1 {
                 font-size: 2.5rem;
@@ -485,6 +870,29 @@
             .tool-header {
                 height: 150px;
                 font-size: 2rem;
+            }
+            
+            .designer-workspace {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .canvas-container {
+                max-width: 100%;
+                overflow-x: auto;
+            }
+            
+            #dressCanvas {
+                max-width: 300px;
+                height: auto;
+            }
+            
+            .template-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .color-palette {
+                grid-template-columns: repeat(4, 1fr);
             }
         }
     </style>
@@ -1056,6 +1464,133 @@
         </div>
     </section>
 
+    <!-- Interactive Dress Designer -->
+    <section class="dress-designer">
+        <div class="container">
+            <h2 class="section-title">Interactive Dress Designer</h2>
+            <p style="text-align: center; margin-bottom: 3rem; color: #666; font-size: 1.1rem;">
+                Sketch and color your own dress designs to visualize your creative ideas in real-time.
+            </p>
+            
+            <div class="designer-workspace">
+                <div class="design-tools">
+                    <h3>Design Tools</h3>
+                    
+                    <!-- Dress Templates -->
+                    <div class="tool-section">
+                        <h4>Dress Templates</h4>
+                        <div class="template-options">
+                            <button class="template-btn active" data-template="a-line">A-Line</button>
+                            <button class="template-btn" data-template="sheath">Sheath</button>
+                            <button class="template-btn" data-template="ball-gown">Ball Gown</button>
+                            <button class="template-btn" data-template="maxi">Maxi</button>
+                            <button class="template-btn" data-template="sleeveless">Sleeveless</button>
+                            <button class="template-btn" data-template="polo-dress">Polo Dress</button>
+                            <button class="template-btn" data-template="t-shirt">T-Shirt</button>
+                            <button class="template-btn" data-template="skirt">Skirt</button>
+                            <button class="template-btn" data-template="scarf">Scarf</button>
+                            <button class="template-btn" data-template="cap">Cap</button>
+                            <button class="template-btn" data-template="cocktail">Cocktail</button>
+                            <button class="template-btn" data-template="wrap-dress">Wrap Dress</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Color Palette -->
+                    <div class="tool-section">
+                        <h4>Color Palette</h4>
+                        <div class="color-palette">
+                            <div class="color-option active" data-color="#ff6b6b" style="background: #ff6b6b;"></div>
+                            <div class="color-option" data-color="#4ecdc4" style="background: #4ecdc4;"></div>
+                            <div class="color-option" data-color="#45b7d1" style="background: #45b7d1;"></div>
+                            <div class="color-option" data-color="#96ceb4" style="background: #96ceb4;"></div>
+                            <div class="color-option" data-color="#ffeaa7" style="background: #ffeaa7;"></div>
+                            <div class="color-option" data-color="#dda0dd" style="background: #dda0dd;"></div>
+                            <div class="color-option" data-color="#f8b500" style="background: #f8b500;"></div>
+                            <div class="color-option" data-color="#2c2c2c" style="background: #2c2c2c;"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Brush Tools -->
+                    <div class="tool-section">
+                        <h4>Brush Tools</h4>
+                        <div class="brush-tools">
+                            <button class="brush-btn active" data-tool="brush">
+                                <i class="fas fa-paint-brush"></i> Brush
+                            </button>
+                            <button class="brush-btn" data-tool="eraser">
+                                <i class="fas fa-eraser"></i> Eraser
+                            </button>
+                            <button class="brush-btn" data-tool="fill">
+                                <i class="fas fa-fill-drip"></i> Fill
+                            </button>
+                        </div>
+                        <div class="brush-size">
+                            <label>Brush Size:</label>
+                            <input type="range" id="brushSize" min="2" max="20" value="5">
+                            <span id="brushSizeValue">5px</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Actions -->
+                    <div class="tool-section">
+                        <h4>Actions</h4>
+                        <div class="action-buttons">
+                            <button class="action-btn" id="clearCanvas">
+                                <i class="fas fa-trash"></i> Clear
+                            </button>
+                            <button class="action-btn" id="saveDesign">
+                                <i class="fas fa-download"></i> Save
+                            </button>
+                            <button class="action-btn" id="randomize">
+                                <i class="fas fa-random"></i> Random
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="canvas-area">
+                    <h3>Design Canvas</h3>
+                    <div class="canvas-container">
+                        <canvas id="dressCanvas" width="400" height="600"></canvas>
+                        <div class="canvas-overlay">
+                            <div class="dress-template" id="currentTemplate"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="design-preview">
+                    <h3>Preview & Colors</h3>
+                    <div class="preview-area">
+                        <div class="dress-preview" id="dressPreview">
+                            <div class="dress-silhouette" id="dressSilhouette"></div>
+                        </div>
+                        <div class="color-analysis">
+                            <h4>Color Analysis</h4>
+                            <div class="dominant-colors" id="dominantColors">
+                                <p>Start designing to see color analysis</p>
+                            </div>
+                        </div>
+                        <div class="design-info">
+                            <h4>Design Details</h4>
+                            <div class="info-item">
+                                <span class="label">Template:</span>
+                                <span class="value" id="currentTemplateName">A-Line</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Colors Used:</span>
+                                <span class="value" id="colorsUsed">0</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Style:</span>
+                                <span class="value" id="designStyle">Minimalist</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Back to Design Studio -->
     <section style="padding: 40px 20px; text-align: center; background: white;">
         <a href="index.html#design" class="btn btn-primary">
@@ -1106,5 +1641,482 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Dress Designer Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const canvas = document.getElementById('dressCanvas');
+            const ctx = canvas.getContext('2d');
+            const templateBtns = document.querySelectorAll('.template-btn');
+            const colorOptions = document.querySelectorAll('.color-option');
+            const brushBtns = document.querySelectorAll('.brush-btn');
+            const brushSizeSlider = document.getElementById('brushSize');
+            const brushSizeValue = document.getElementById('brushSizeValue');
+            const clearBtn = document.getElementById('clearCanvas');
+            const saveBtn = document.getElementById('saveDesign');
+            const randomizeBtn = document.getElementById('randomize');
+            
+            let isDrawing = false;
+            let currentColor = '#ff6b6b';
+            let currentTool = 'brush';
+            let brushSize = 5;
+            let usedColors = new Set();
+            
+            // Initialize canvas
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Dress templates (simplified SVG paths)
+            const templates = {
+                'a-line': {
+                    name: 'A-Line',
+                    path: function() {
+                        ctx.beginPath();
+                        ctx.moveTo(200, 80);
+                        ctx.lineTo(180, 120);
+                        ctx.lineTo(160, 300);
+                        ctx.lineTo(140, 500);
+                        ctx.lineTo(260, 500);
+                        ctx.lineTo(240, 300);
+                        ctx.lineTo(220, 120);
+                        ctx.closePath();
+                    }
+                },
+                'sheath': {
+                    name: 'Sheath',
+                    path: function() {
+                        ctx.beginPath();
+                        ctx.moveTo(200, 80);
+                        ctx.lineTo(180, 120);
+                        ctx.lineTo(170, 500);
+                        ctx.lineTo(230, 500);
+                        ctx.lineTo(220, 120);
+                        ctx.closePath();
+                    }
+                },
+                'ball-gown': {
+                    name: 'Ball Gown',
+                    path: function() {
+                        ctx.beginPath();
+                        ctx.moveTo(200, 80);
+                        ctx.lineTo(185, 120);
+                        ctx.lineTo(180, 250);
+                        ctx.lineTo(120, 400);
+                        ctx.lineTo(100, 500);
+                        ctx.lineTo(300, 500);
+                        ctx.lineTo(280, 400);
+                        ctx.lineTo(220, 250);
+                        ctx.lineTo(215, 120);
+                        ctx.closePath();
+                    }
+                },
+                'maxi': {
+                    name: 'Maxi',
+                    path: function() {
+                        ctx.beginPath();
+                        ctx.moveTo(200, 80);
+                        ctx.lineTo(175, 120);
+                        ctx.lineTo(165, 300);
+                        ctx.lineTo(155, 500);
+                        ctx.lineTo(245, 500);
+                        ctx.lineTo(235, 300);
+                        ctx.lineTo(225, 120);
+                        ctx.closePath();
+                    }
+                },
+                'sleeveless': {
+                    name: 'Sleeveless Dress',
+                    path: function() {
+                        ctx.beginPath();
+                        ctx.moveTo(200, 60);
+                        ctx.lineTo(170, 100);
+                        ctx.lineTo(165, 200);
+                        ctx.lineTo(160, 400);
+                        ctx.lineTo(240, 400);
+                        ctx.lineTo(235, 200);
+                        ctx.lineTo(230, 100);
+                        ctx.closePath();
+                    }
+                },
+                'polo-dress': {
+                    name: 'Polo Dress',
+                    path: function() {
+                        ctx.beginPath();
+                        // Collar
+                        ctx.moveTo(190, 60);
+                        ctx.lineTo(210, 60);
+                        ctx.lineTo(205, 80);
+                        ctx.lineTo(195, 80);
+                        ctx.closePath();
+                        // Body
+                        ctx.moveTo(200, 80);
+                        ctx.lineTo(170, 120);
+                        ctx.lineTo(165, 350);
+                        ctx.lineTo(235, 350);
+                        ctx.lineTo(230, 120);
+                        ctx.closePath();
+                    }
+                },
+                't-shirt': {
+                    name: 'T-Shirt',
+                    path: function() {
+                        ctx.beginPath();
+                        // Sleeves
+                        ctx.moveTo(140, 100);
+                        ctx.lineTo(170, 90);
+                        ctx.lineTo(170, 150);
+                        ctx.lineTo(140, 160);
+                        ctx.closePath();
+                        ctx.moveTo(230, 90);
+                        ctx.lineTo(260, 100);
+                        ctx.lineTo(260, 160);
+                        ctx.lineTo(230, 150);
+                        ctx.closePath();
+                        // Body
+                        ctx.moveTo(170, 90);
+                        ctx.lineTo(230, 90);
+                        ctx.lineTo(225, 250);
+                        ctx.lineTo(175, 250);
+                        ctx.closePath();
+                    }
+                },
+                'skirt': {
+                    name: 'Skirt',
+                    path: function() {
+                        ctx.beginPath();
+                        ctx.moveTo(180, 200);
+                        ctx.lineTo(220, 200);
+                        ctx.lineTo(240, 400);
+                        ctx.lineTo(160, 400);
+                        ctx.closePath();
+                    }
+                },
+                'scarf': {
+                    name: 'Scarf',
+                    path: function() {
+                        ctx.beginPath();
+                        // Rectangular scarf with curves
+                        ctx.moveTo(150, 100);
+                        ctx.quadraticCurveTo(200, 80, 250, 100);
+                        ctx.lineTo(240, 130);
+                        ctx.quadraticCurveTo(200, 110, 160, 130);
+                        ctx.closePath();
+                    }
+                },
+                'cap': {
+                    name: 'Cap',
+                    path: function() {
+                        ctx.beginPath();
+                        // Cap crown
+                        ctx.arc(200, 80, 40, 0, Math.PI, true);
+                        // Visor
+                        ctx.moveTo(160, 80);
+                        ctx.lineTo(130, 90);
+                        ctx.lineTo(135, 100);
+                        ctx.lineTo(165, 90);
+                        ctx.closePath();
+                    }
+                },
+                'cocktail': {
+                    name: 'Cocktail Dress',
+                    path: function() {
+                        ctx.beginPath();
+                        ctx.moveTo(200, 70);
+                        ctx.lineTo(175, 110);
+                        ctx.lineTo(170, 200);
+                        ctx.lineTo(150, 320);
+                        ctx.lineTo(250, 320);
+                        ctx.lineTo(230, 200);
+                        ctx.lineTo(225, 110);
+                        ctx.closePath();
+                    }
+                },
+                'wrap-dress': {
+                    name: 'Wrap Dress',
+                    path: function() {
+                        ctx.beginPath();
+                        // Wrap style with overlapping front
+                        ctx.moveTo(200, 80);
+                        ctx.lineTo(160, 120);
+                        ctx.lineTo(180, 180);
+                        ctx.lineTo(200, 200);
+                        ctx.lineTo(220, 180);
+                        ctx.lineTo(240, 120);
+                        ctx.lineTo(200, 80);
+                        // Skirt part
+                        ctx.moveTo(180, 180);
+                        ctx.lineTo(160, 400);
+                        ctx.lineTo(240, 400);
+                        ctx.lineTo(220, 180);
+                        ctx.closePath();
+                    }
+                }
+            };
+            
+            let currentTemplate = 'a-line';
+            
+            // Draw template outline
+            function drawTemplate() {
+                ctx.save();
+                ctx.strokeStyle = '#ddd';
+                ctx.lineWidth = 2;
+                ctx.setLineDash([5, 5]);
+                templates[currentTemplate].path();
+                ctx.stroke();
+                ctx.restore();
+                
+                // Update template name
+                document.getElementById('currentTemplateName').textContent = templates[currentTemplate].name;
+            }
+            
+            // Initial template draw
+            drawTemplate();
+            updateSilhouetteShape(document.getElementById('dressSilhouette'));
+            
+            // Template selection
+            templateBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    templateBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    currentTemplate = this.dataset.template;
+                    
+                    // Clear canvas and redraw template
+                    ctx.fillStyle = 'white';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    drawTemplate();
+                    updatePreview();
+                });
+            });
+            
+            // Color selection
+            colorOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    colorOptions.forEach(o => o.classList.remove('active'));
+                    this.classList.add('active');
+                    currentColor = this.dataset.color;
+                });
+            });
+            
+            // Tool selection
+            brushBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    brushBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    currentTool = this.dataset.tool;
+                    
+                    // Update cursor
+                    if (currentTool === 'eraser') {
+                        canvas.style.cursor = 'grab';
+                    } else {
+                        canvas.style.cursor = 'crosshair';
+                    }
+                });
+            });
+            
+            // Brush size
+            brushSizeSlider.addEventListener('input', function() {
+                brushSize = this.value;
+                brushSizeValue.textContent = brushSize + 'px';
+            });
+            
+            // Canvas drawing
+            canvas.addEventListener('mousedown', startDrawing);
+            canvas.addEventListener('mousemove', draw);
+            canvas.addEventListener('mouseup', stopDrawing);
+            canvas.addEventListener('mouseout', stopDrawing);
+            
+            function startDrawing(e) {
+                isDrawing = true;
+                draw(e);
+            }
+            
+            function draw(e) {
+                if (!isDrawing) return;
+                
+                const rect = canvas.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                ctx.lineWidth = brushSize;
+                ctx.lineCap = 'round';
+                
+                if (currentTool === 'brush') {
+                    ctx.globalCompositeOperation = 'source-over';
+                    ctx.strokeStyle = currentColor;
+                    usedColors.add(currentColor);
+                } else if (currentTool === 'eraser') {
+                    ctx.globalCompositeOperation = 'destination-out';
+                }
+                
+                ctx.lineTo(x, y);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(x, y);
+                
+                updatePreview();
+            }
+            
+            function stopDrawing() {
+                if (isDrawing) {
+                    isDrawing = false;
+                    ctx.beginPath();
+                }
+            }
+            
+            // Fill tool
+            canvas.addEventListener('click', function(e) {
+                if (currentTool === 'fill') {
+                    const rect = canvas.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    floodFill(Math.floor(x), Math.floor(y), currentColor);
+                    usedColors.add(currentColor);
+                    updatePreview();
+                }
+            });
+            
+            // Simple flood fill implementation
+            function floodFill(x, y, color) {
+                const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                const targetColor = getPixelColor(imageData, x, y);
+                const fillColor = hexToRgb(color);
+                
+                if (colorsMatch(targetColor, fillColor)) return;
+                
+                const stack = [[x, y]];
+                
+                while (stack.length > 0) {
+                    const [currentX, currentY] = stack.pop();
+                    
+                    if (currentX < 0 || currentX >= canvas.width || currentY < 0 || currentY >= canvas.height) continue;
+                    
+                    const currentColor = getPixelColor(imageData, currentX, currentY);
+                    
+                    if (!colorsMatch(currentColor, targetColor)) continue;
+                    
+                    setPixelColor(imageData, currentX, currentY, fillColor);
+                    
+                    stack.push([currentX + 1, currentY]);
+                    stack.push([currentX - 1, currentY]);
+                    stack.push([currentX, currentY + 1]);
+                    stack.push([currentX, currentY - 1]);
+                }
+                
+                ctx.putImageData(imageData, 0, 0);
+            }
+            
+            function getPixelColor(imageData, x, y) {
+                const index = (y * imageData.width + x) * 4;
+                return [
+                    imageData.data[index],
+                    imageData.data[index + 1],
+                    imageData.data[index + 2],
+                    imageData.data[index + 3]
+                ];
+            }
+            
+            function setPixelColor(imageData, x, y, color) {
+                const index = (y * imageData.width + x) * 4;
+                imageData.data[index] = color[0];
+                imageData.data[index + 1] = color[1];
+                imageData.data[index + 2] = color[2];
+                imageData.data[index + 3] = 255;
+            }
+            
+            function colorsMatch(color1, color2) {
+                return color1[0] === color2[0] && color1[1] === color2[1] && color1[2] === color2[2];
+            }
+            
+            function hexToRgb(hex) {
+                const r = parseInt(hex.slice(1, 3), 16);
+                const g = parseInt(hex.slice(3, 5), 16);
+                const b = parseInt(hex.slice(5, 7), 16);
+                return [r, g, b];
+            }
+            
+            // Update preview and analysis
+            function updatePreview() {
+                // Update colors used count
+                document.getElementById('colorsUsed').textContent = usedColors.size;
+                
+                // Update dominant colors display
+                const dominantColorsDiv = document.getElementById('dominantColors');
+                dominantColorsDiv.innerHTML = '';
+                
+                if (usedColors.size > 0) {
+                    usedColors.forEach(color => {
+                        const colorDot = document.createElement('div');
+                        colorDot.className = 'color-dot';
+                        colorDot.style.backgroundColor = color;
+                        dominantColorsDiv.appendChild(colorDot);
+                    });
+                } else {
+                    dominantColorsDiv.innerHTML = '<p>Start designing to see colors</p>';
+                }
+                
+                // Update design style
+                let style = 'Minimalist';
+                if (usedColors.size > 3) style = 'Vibrant';
+                else if (usedColors.size > 1) style = 'Balanced';
+                document.getElementById('designStyle').textContent = style;
+                
+                // Update dress silhouette color and shape
+                const silhouette = document.getElementById('dressSilhouette');
+                if (usedColors.size > 0) {
+                    const firstColor = Array.from(usedColors)[0];
+                    silhouette.style.background = `linear-gradient(45deg, ${firstColor}, ${Array.from(usedColors)[usedColors.size - 1] || firstColor})`;
+                }
+                
+                // Update silhouette shape based on template
+                updateSilhouetteShape(silhouette);
+            }
+            
+            // Update silhouette shape based on current template
+            function updateSilhouetteShape(silhouette) {
+                silhouette.className = 'dress-silhouette';
+                silhouette.classList.add(`silhouette-${currentTemplate}`);
+            }
+            
+            // Clear canvas
+            clearBtn.addEventListener('click', function() {
+                ctx.fillStyle = 'white';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                drawTemplate();
+                usedColors.clear();
+                updatePreview();
+            });
+            
+            // Save design
+            saveBtn.addEventListener('click', function() {
+                const link = document.createElement('a');
+                link.download = `dress-design-${Date.now()}.png`;
+                link.href = canvas.toDataURL();
+                link.click();
+            });
+            
+            // Randomize design
+            randomizeBtn.addEventListener('click', function() {
+                ctx.fillStyle = 'white';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                drawTemplate();
+                
+                // Random colors and strokes
+                const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#ffeaa7', '#dda0dd', '#f8b500'];
+                usedColors.clear();
+                
+                for (let i = 0; i < 10; i++) {
+                    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                    ctx.strokeStyle = randomColor;
+                    ctx.lineWidth = Math.random() * 10 + 2;
+                    ctx.beginPath();
+                    ctx.moveTo(Math.random() * canvas.width, Math.random() * canvas.height);
+                    ctx.lineTo(Math.random() * canvas.width, Math.random() * canvas.height);
+                    ctx.stroke();
+                    usedColors.add(randomColor);
+                }
+                
+                updatePreview();
+            });
+        });
+    </script>
 </body>
 </html>
