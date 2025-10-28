@@ -364,40 +364,4 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollAnimations();
 });
 
-// Color theme switcher (bonus feature)
-function createThemeSwitcher() {
-    const themeSwitcher = document.createElement('button');
-    themeSwitcher.innerHTML = '🌙';
-    themeSwitcher.className = 'theme-switcher';
-    themeSwitcher.style.cssText = `
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        border: none;
-        background: #667eea;
-        color: white;
-        font-size: 20px;
-        cursor: pointer;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-        z-index: 1000;
-        transition: all 0.3s ease;
-    `;
-    
-    let isDark = false;
-    
-    themeSwitcher.addEventListener('click', () => {
-        isDark = !isDark;
-        document.body.style.filter = isDark ? 'invert(1) hue-rotate(180deg)' : 'none';
-        themeSwitcher.innerHTML = isDark ? '☀️' : '🌙';
-    });
-    
-    document.body.appendChild(themeSwitcher);
-}
-
-// Initialize theme switcher
-document.addEventListener('DOMContentLoaded', createThemeSwitcher);
-
 console.log('Fashionista website loaded successfully! ✨');
