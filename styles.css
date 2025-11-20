@@ -254,7 +254,7 @@ h1, h2, h3, h4 {
 /* About Section */
 .about {
     padding: 80px 20px;
-    background: #fff;
+    background: #f7f8fb;
 }
 
 .about-content {
@@ -312,7 +312,27 @@ h1, h2, h3, h4 {
 /* Collections Section */
 .collections {
     padding: 80px 20px;
-    background: #f8f9fa;
+    background-image: url('images/butterfly.bk.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+}
+
+.collections::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(248, 249, 250, 0.8);
+    z-index: 1;
+}
+
+.collections .container {
+    position: relative;
+    z-index: 2;
 }
 
 .collections-grid {
@@ -322,7 +342,7 @@ h1, h2, h3, h4 {
 }
 
 .collection-card {
-    background: white;
+    background: #fafbfc;
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -395,7 +415,7 @@ h1, h2, h3, h4 {
 /* Design Studio Section */
 .design-studio {
     padding: 80px 20px;
-    background: white;
+    background: #f7f8fb;
 }
 
 .design-content {
@@ -523,7 +543,7 @@ h1, h2, h3, h4 {
 }
 
 .trend-item {
-    background: white;
+    background: #fafbfc;
     padding: 2rem;
     border-radius: 15px;
     text-align: center;
@@ -637,7 +657,7 @@ h1, h2, h3, h4 {
 /* Blog Section */
 .blog {
     padding: 80px 20px;
-    background: white;
+    background: #f7f8fb;
 }
 
 .blog-grid {
@@ -647,7 +667,7 @@ h1, h2, h3, h4 {
 }
 
 .blog-card {
-    background: white;
+    background: #fafbfc;
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
